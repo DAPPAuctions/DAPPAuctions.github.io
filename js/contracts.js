@@ -30,12 +30,12 @@ function displayInfo(contract, index){
     contract.methods.currentDay().call({
         shouldPollResponse: true
     }).then(res => {
-        $(`.${ercContracts[index].name}`)[0].innerHTML = "Day: " + parseInt(res)
+        $(`.${ercContracts[index].name}-day`)[0].innerHTML = "Day: " + parseInt(res)
 	
 		mainContract.methods.xfLobby(res).call({
 			shouldPollResponse: true,
 		}).then(res => {
-			$(`.${ercContracts[index].name}`)[1].innerHTML = parseFloat(res) / 1e18 + " ETH"
+			$(`.${ercContracts[index].name}-lobby`)[1].innerHTML = parseFloat(res) / 1e18 + " ETH"
 						 
 		})
 	
