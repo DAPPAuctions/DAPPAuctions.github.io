@@ -280,10 +280,9 @@
     <script src="js/app.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/contracts.js"></script>
-	
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73262508-12"></script>
-	
     <script>
+
 function gtag() {
     dataLayer.push(arguments);
 }
@@ -292,6 +291,28 @@ gtag('js', new Date());
 gtag('config', 'UA-73262508-12');
     </script>
 
+    <script>
+function zeroPrefix(val) {
+    if ((val.toString()).length < 2) {
+        val = '0' + val;
+    }
+
+    return val;
+}
+
+let timers = document.getElementsByClassName('timer-content');
+
+setInterval(function time() {
+    let d = new Date(),
+        hours = 23 - d.getUTCHours(),
+        min = 59 - d.getUTCMinutes(),
+        sec = 59 - d.getUTCSeconds();
+
+    for (let i = 0; i < timers.length; i++) {
+        timers[i].innerHTML = 'Closing in ' + zeroPrefix(hours) + 'h : ' + zeroPrefix(min) + 'm : ' + zeroPrefix(sec) + 's';
+    }
+}, 1000);
+    </script>
 
 </body>
 
