@@ -13,7 +13,8 @@ function setUpEth() {
     $(`.${ercContracts[0].name}`)[1].innerHTML = "TEST2"
 
 	for(var i = 0; i < ercContracts.length; i++){
-		
+		console.log("I: " + i)
+
 		contract = new web3.eth.Contract(ercAbi, ercContracts[i].addr)
 		if (!contract) {
 			console.log("Error loading contract")
