@@ -12,7 +12,7 @@ function setUpEth() {
     $(`.${ercContracts[0].name}`)[0].innerHTML = "TEST"
     $(`.${ercContracts[0].name}`)[1].innerHTML = "TEST2"
 
-	for(var i = 0; i < ercContracts.length; i++){
+	for(var i = 0; i < 10 i++){
 		console.log("I: " + i)
 
 		contract = new web3.eth.Contract(ercAbi, ercContracts[i].addr)
