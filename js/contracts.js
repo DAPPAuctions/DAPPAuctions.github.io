@@ -5,9 +5,6 @@ var trcContracts = {}
 
 
 ercContracts[0] = {name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"}
-console.log(ercContracts[0])
-console.log(ercContracts[0].name)
-console.log(ercContracts[0].addr)
 
 setUpEth()
 
@@ -18,7 +15,10 @@ function setUpEth() {
 	for(var i = 0; i < ercContracts.length; i++){
 		
 		contract = new web3.eth.Contract(ercAbi, ercContracts[i].addr)
-		if (!contract) return void 0
+		if (!contract) {
+			console.log("Error loading contract")
+			return void 0
+		}
 		
 		displayInfo(contract, i)
 		
@@ -26,7 +26,7 @@ function setUpEth() {
 }
 
 function displayInfo(contract, index){
-	
+	console.log("Index: " + index)
     contract.methods.currentDay().call({
         shouldPollResponse: true
     }).then(res => {
