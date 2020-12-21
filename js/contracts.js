@@ -6,7 +6,8 @@ var trcContracts = {}
 
 ercContracts[0] = {name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"}
 console.log(ercContracts[0])
-console.log(ercContracts[3])
+console.log(ercContracts[0].name)
+console.log(ercContracts[0].a)
 
 
 setUpEth(ercContracts[0].address)
@@ -27,12 +28,14 @@ function displayInfo(contract, index){
         shouldPollResponse: true
     }).then(res => {
         $(`.${ercContracts[index].name}`)[0].innerHTML = "Day: " + parseInt(res)
-    })
 	
-    mainContract.methods.xfLobby(currentDay).call({
-        shouldPollResponse: true,
-    }).then(res => {
-        $(`.${ercContracts[index].name}`)[1].innerHTML = parseFloat(res) / 1e18 + " ETH"
-                     
-    })
+		mainContract.methods.xfLobby(res).call({
+			shouldPollResponse: true,
+		}).then(res => {
+			$(`.${ercContracts[index].name}`)[1].innerHTML = parseFloat(res) / 1e18 + " ETH"
+						 
+		})
+	
+	})
+
 }
