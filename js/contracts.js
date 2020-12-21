@@ -4,7 +4,7 @@ var ercContracts = []
 var trcContracts = []
 
 
-ercContracts[0}.name = "nug"
+ercContracts[0].name = "nug"
 ercContracts[0].address = "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"
 console.log(ercContracts[0])
 console.log(ercContracts[3])
