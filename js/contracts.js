@@ -45,7 +45,6 @@ function displayInfo(contract, index){
 
 }
 
-    <script>
 function zeroPrefix(val) {
     if ((val.toString()).length < 2) {
         val = '0' + val;
@@ -66,4 +65,3 @@ setInterval(function time() {
         timers[i].innerHTML = 'Closing in ' + zeroPrefix(hours) + 'h : ' + zeroPrefix(min) + 'm : ' + zeroPrefix(sec) + 's';
     }
 }, 1000);
-    </script>
