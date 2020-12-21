@@ -7,19 +7,22 @@ var trcContracts = {}
 ercContracts[0] = {name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"}
 console.log(ercContracts[0])
 console.log(ercContracts[0].name)
-console.log(ercContracts[0].a)
+console.log(ercContracts[0].addr)
 
+setUpEth()
 
-setUpEth(ercContracts[0].address)
-
-function setUpEth(addr) {
+function setUpEth() {
     $(`.${ercContracts[0].name}`)[0].innerHTML = "TEST"
     $(`.${ercContracts[0].addr}`)[1].innerHTML = "TEST2"
 
-
-    mainContract = new web3.eth.Contract(ethAbi, addr)
-    if (!mainContract) return void 0
-
+	for(var i = 0; i < ercContracts.length; i++){
+		
+		contract = new web3.eth.Contract(ethAbi, addr)
+		if (!contract) return void 0
+		
+		displayInfo(contract, i)
+		
+	}
 }
 
 function displayInfo(contract, index){
