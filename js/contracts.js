@@ -45,6 +45,8 @@ function setUpErc() {
 		displayInfo(ercContract, i, "erc")
 		
 	}
+	sortTable("eth")
+	console.log("sorted")
 }
 
 function setUpTrc() {
