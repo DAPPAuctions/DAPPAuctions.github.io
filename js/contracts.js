@@ -70,6 +70,7 @@ function setUpTrc() {
 		}
 	}
 	sortTable("trx")
+	console.log("sorted")
 }
 
 function displayInfo(contract, index, type){
