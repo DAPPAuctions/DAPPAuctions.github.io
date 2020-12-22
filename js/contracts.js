@@ -30,7 +30,7 @@ window.addEventListener('load', function () {
     }
 	
 	setUpErc()
-
+	setUpTrc()
 })
 
 function setUpErc() {
