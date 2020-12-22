@@ -27,7 +27,14 @@
 
 <!------------------START ERC---------------------->
             <table id="eth">
-
+                
+				<tr>
+                    <td></td>
+                    <td class="header">Platform</td>
+                    <td class="header">Day</td>
+                    <td class="header">ETH</td>
+                    <td>Link</td>
+                </tr>
                 <tr>
                     <td>#1</td>
                     <td class="header">
@@ -293,8 +300,6 @@
                 </tr>
             </table>
         </div>
-        <p style="font-size: 13px;">* All links above are referral links.</p>
-        <p>v0.2.5</p>
         <a id="telegram" href="https://t.me/DAPPAuctions" target="_blank" data-platform="TELEGRAM">Telegram!</a>
     </div>
 	
@@ -326,42 +331,6 @@ setInterval(function time() {
     }
 }, 1000);
     </script>
-
-<script>
-	sortTable("trx");
-	function sortTable(tableId) {
-	  var table, rows, switching, i, x, y, shouldSwitch;
-	  table = document.getElementById(tableId);
-	  switching = true;
-		  console.log(table)
-
-
-	  while (switching) {
-		switching = false;
-		rows = table.rows;
-
-		for (i = 1; i < (rows.length - 1); i++) {
-		  shouldSwitch = false;
-
-		  x = rows[i].getElementsByTagName("TD")[4];
-		  y = rows[i + 1].getElementsByTagName("TD")[4];
-		  console.log(parseInt(x.innerHTML))
-
-		  if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
-			//if so, mark as a switch and break the loop:
-			shouldSwitch = true;
-			break;
-		  }
-		}
-		if (shouldSwitch) {
-		  /*If a switch has been marked, make the switch
-		  and mark that a switch has been done:*/
-		  rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-		  switching = true;
-		}
-	  }
-	}
-</script>
 
 </body>
 
