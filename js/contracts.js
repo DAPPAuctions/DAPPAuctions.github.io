@@ -93,7 +93,7 @@ function displayInfo(contract, index, type){
 			if(type == "erc")
 				$(`.${ercContracts[index].name}`)[1].innerHTML = parseFloat(res) / 1e18 + " ETH"
 			if(type == "trc")
-				$(`.${trcContracts[index].name}`)[1].innerHTML = parseFloat(res) / 1e6 + " TRC"
+				$(`.${trcContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e6).toFixed(1) + " TRX"
 		})
 	
 	})
