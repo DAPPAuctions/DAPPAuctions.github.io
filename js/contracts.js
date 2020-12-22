@@ -107,10 +107,10 @@ function sortTable(tableId) {
 		for (i = 1; i < (rows.length - 1); i++) {
 			shouldSwitch = false;
 
-			x = rows[i].getElementsByName("value")[0];
+			x = rows[i].getElementById("value");
 			console.log(x)
 
-			y = rows[i + 1].getElementById("value")[0];
+			y = rows[i + 1].getElementById("value");
 			console.log(y)
 
 			if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
