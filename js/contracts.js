@@ -20,11 +20,11 @@ window.addEventListener('load', function () {
         web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
     }
 	
-	setUpEth()
+	setUpErc()
 
 })
 
-function setUpEth() {
+function setUpErc() {
 
 	for(var i = 0; i < ercContracts.length; i++){
 		console.log("I: " + i)
@@ -35,25 +35,58 @@ function setUpEth() {
 			return void 0
 		}
 		
-		displayInfo(ercContract, i)
+		displayInfo(ercContract, i, "erc")
 		
 	}
 }
 
-function displayInfo(contract, index){
+function setUpTrc() {
+
+	for(var i = 0; i < trcContracts.length; i++){
+		console.log("I: " + i)
+
+		trc(i)
+
+		function trc(index){
+			try{
+				tronWeb.contract().at(trcContracts[i].addr, function (error, result) {
+					if (!error) {
+						trcContract = result;
+						console.log("Contract Loaded")
+					} else{
+						console.error(error);
+						trc(i)
+					}
+				});
+			}catch(e){
+				console.log(e)
+				trc(i)
+			}
+		}
+		
+		displayInfo(trcContract, i, "trc")
+		
+	}
+}
+
+function displayInfo(contract, index, type){
 	console.log("Index: " + index)
     contract.methods.currentDay().call({
         shouldPollResponse: true
     }).then(res => {
-        $(`.${ercContracts[index].name}`)[0].innerHTML = "Day: " + parseInt(res)
+		if(type == "erc")
+			$(`.${ercContracts[index].name}`)[0].innerHTML = "Day: " + parseInt(res)
+		if(type == "trc")
+			$(`.${trcContracts[index].name}`)[0].innerHTML = "Day: " + parseInt(res)
 	
 		contract.methods.xfLobby(res).call({
 			shouldPollResponse: true,
 		}).then(res => {
-			$(`.${ercContracts[index].name}`)[1].innerHTML = parseFloat(res) / 1e18 + " ETH"
-						 
+			if(type == "erc")
+				$(`.${ercContracts[index].name}`)[1].innerHTML = parseFloat(res) / 1e18 + " ETH"
+			if(type == "trc")
+				$(`.${trcContracts[index].name}`)[1].innerHTML = parseFloat(res) / 1e6 + " TRC"
 		})
 	
 	})
-
 }
