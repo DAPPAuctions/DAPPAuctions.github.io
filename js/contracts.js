@@ -87,9 +87,9 @@ function displayInfo(contract, index, type){
 			shouldPollResponse: true,
 		}).then(res => {
 			if(type == "erc")
-				$(`.${ercContracts[index].name}`)[1].innerHTML = parseFloat(res) / 1e18 + " ETH"
+				$(`.${ercContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e18).toLocaleString()
 			if(type == "trc")
-				$(`.${trcContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e6).toFixed(1) + " TRX"
+				$(`.${trcContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e6).toLocaleString()
 		})
 	
 	})
