@@ -51,10 +51,7 @@ function setUpErc() {
 function setUpTrc() {
 
 	for(var i = 0; i < trcContracts.length; i++){
-		console.log("I: " + i)
-
 		trc(i)
-
 		function trc(index){
 			try{
 				tronWeb.contract().at(trcContracts[i].addr, function (error, result) {
@@ -71,10 +68,9 @@ function setUpTrc() {
 				console.log(e)
 				trc(i)
 			}
-			
 		}
-				
 	}
+	sortTable("trx")
 }
 
 function displayInfo(contract, index, type){
@@ -97,4 +93,36 @@ function displayInfo(contract, index, type){
 		})
 	
 	})
+}
+
+function sortTable(tableId) {
+	var table, rows, switching, i, x, y, shouldSwitch;
+	table = document.getElementById(tableId);
+	switching = true;
+	console.log(table)
+
+	while (switching) {
+		switching = false;
+		rows = table.rows;
+
+		for (i = 1; i < (rows.length - 1); i++) {
+			shouldSwitch = false;
+
+			x = rows[i].getElementsByClassName("value")[0];
+			y = rows[i + 1].getElementsByClassName("value")[0];
+			console.log(parseInt(x.innerHTML))
+
+			if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
+			//if so, mark as a switch and break the loop:
+			shouldSwitch = true;
+			break;
+			}
+		}
+		if (shouldSwitch) {
+			/*If a switch has been marked, make the switch
+			and mark that a switch has been done:*/
+			rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+			switching = true;
+		}
+	}
 }
