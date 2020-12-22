@@ -123,11 +123,11 @@ function sortTable(tableId) {
 	}
 	
 	setInterval({
-		if(rows[rows.length].getElementsByClassName("value")[0] == "---" && tableId == "eth")
+		if(document.getElementById(tableId).rows[rows.length].getElementsByClassName("value")[0] == "---" && tableId == "eth")
 			sortTable("eth")
 		else if(rows[rows.length].getElementsByClassName("value")[0] == "---" && tableId == "trx")
 				sortTable("trx")
 		else
 			clearInterval()
-}, 1000)
+	}, 1000)
 }
