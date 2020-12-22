@@ -110,9 +110,11 @@ function sortTable(tableId) {
 			x = rows[i].getElementsByTagName("value")
 			console.log(x)
 			console.log(x.innerHTML)
-			console.log(parseInt(x.innerHTML))
 
 			y = rows[i + 1].getElementsByClassName("td")
+			console.log(y)
+			console.log(y.innerHTML)
+
 			
 			if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
 			//if so, mark as a switch and break the loop:
