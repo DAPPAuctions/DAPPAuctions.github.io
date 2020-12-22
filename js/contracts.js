@@ -60,6 +60,7 @@ function setUpTrc() {
 				tronWeb.contract().at(trcContracts[i].addr, function (error, result) {
 					if (!error) {
 						trcContract = result;
+						displayInfo(trcContract, i, "trc")
 						console.log("Contract Loaded")
 					} else{
 						console.error(error);
@@ -70,10 +71,9 @@ function setUpTrc() {
 				console.log(e)
 				trc(i)
 			}
+			
 		}
-		
-		displayInfo(trcContract, i, "trc")
-		
+				
 	}
 }
 
