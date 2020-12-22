@@ -59,7 +59,6 @@ function setUpTrc() {
 					if (!error) {
 						trcContract = result;
 						displayInfo(trcContract, index, "trc")
-						console.log("Contract Loaded")
 					} else{
 						console.error(error);
 						trc(i)
@@ -122,4 +121,13 @@ function sortTable(tableId) {
 			switching = true
 		}
 	}
+	
+	setInterval({
+		if(rows[rows.length].getElementsByClassName("value")[0] == "---" && tableId == "eth")
+			sortTable("eth")
+		else if(rows[rows.length].getElementsByClassName("value")[0] == "---" && tableId == "trx")
+				sortTable("trx")
+		else
+			clearInterval()
+}, 1000)
 }
