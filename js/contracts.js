@@ -124,7 +124,7 @@ function sortTable(tableId) {
 	
 var checkSort = setInterval({
 	
-	if( y[0].innerHTML == "---" && tableId == "eth" ){
+	if( (y[0].innerHTML) == "---" && tableId == "eth" ){
 		sortTable("eth")
 	}else 
 		if( y[0].innerHTML == "---" && tableId == "trx"){
