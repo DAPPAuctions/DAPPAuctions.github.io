@@ -18,8 +18,6 @@ trcContracts[6] = {name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ"}
 trcContracts[7] = {name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"}
 trcContracts[8] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
 
-	sortTable("trx")
-
 window.addEventListener('load', function () {
     // Load WEB3
     if (typeof web3 !== 'undefined') {
@@ -30,8 +28,8 @@ window.addEventListener('load', function () {
         web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
     }
 	
-	//setUpErc()
-	//setUpTrc()
+	setUpErc()
+	setUpTrc()
 })
 
 function setUpErc() {
@@ -108,24 +106,15 @@ function sortTable(tableId) {
 		for (i = 1; i < (rows.length - 1); i++) {
 			shouldSwitch = false;
 
-			x = rows[i].getElementsByTagName("value")
-			console.log(x[0])
-			console.log(x.innerHTML)
-
-			y = rows[i + 1].getElementsByClassName("td")
-			console.log(y[4])
-			console.log(y[4].innerHTML)
-
+			x = rows[i].getElementsByClassName("value")
+			y = rows[i + 1].getElementsByClassName("value")
 			
-			if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
-			//if so, mark as a switch and break the loop:
+			if (parseInt(x[0].innerHTML) < parseInt(y[0].innerHTML)) {
 			shouldSwitch = true
 			break
 			}
 		}
 		if (shouldSwitch) {
-			/*If a switch has been marked, make the switch
-			and mark that a switch has been done:*/
 			rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
 			switching = true
 		}
