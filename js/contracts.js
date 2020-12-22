@@ -122,17 +122,17 @@ function sortTable(tableId) {
 		}
 	}
 	
-	if( y[0].innerHTML == "---" && tableId == "eth" ){
+	if( $(`.value`)[$(`.eth`).rows.length - 1].innerHTML == "---" && tableId == "eth" ){
 		sortTable("eth")
 	}else 
-		if( y[0].innerHTML == "---" && tableId == "trx"){
+		if( $(`.value`)[$(`.value`).length - 1].innerHTML == "---" && tableId == "trx"){
 			sortTable("trx")
 		}
 }
 /*
 var checkSort = setInterval({
 	
-	if( $(`.eth`).length>1)//[$(`.eth`).length].tr.getElementsByClassName("value")[0].innerHTML == "---" && tableId == "eth" )
+	if( $(`.eth`)[$(`.eth`).length].rows.getElementsByClassName("value")[0].innerHTML == "---" && tableId == "eth" )
 		sortTable("eth")
 	else if( $(`.value`)[$(`.value`).length].innerHTML == "---" && tableId == "trx")
 			sortTable("trx")
