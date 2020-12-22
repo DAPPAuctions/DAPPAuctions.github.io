@@ -78,7 +78,6 @@ function setUpTrc() {
 }
 
 function displayInfo(contract, index, type){
-	console.log(contract[index].name)
 	
     contract.methods.currentDay().call({
         shouldPollResponse: true
