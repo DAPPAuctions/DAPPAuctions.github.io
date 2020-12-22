@@ -35,19 +35,19 @@ function setUpEth() {
 			return void 0
 		}
 		
-		displayInfo(contract, i)
+		displayInfo(ercContract, i)
 		
 	}
 }
 
 function displayInfo(contract, index){
 	console.log("Index: " + index)
-    ercContract.methods.currentDay().call({
+    contract.methods.currentDay().call({
         shouldPollResponse: true
     }).then(res => {
         $(`.${ercContracts[index].name}`)[0].innerHTML = "Day: " + parseInt(res)
 	
-		ercContract.methods.xfLobby(res).call({
+		contract.methods.xfLobby(res).call({
 			shouldPollResponse: true,
 		}).then(res => {
 			$(`.${ercContracts[index].name}`)[1].innerHTML = parseFloat(res) / 1e18 + " ETH"
