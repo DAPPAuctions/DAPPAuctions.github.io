@@ -127,7 +127,6 @@ function sortTable(tableId) {
 			sortTable("eth")
 		else if( $(`.value`)[$(`.value`).length].innerHTML == "---" && tableId == "trx")
 				sortTable("trx")
-		else
-			clearInterval()
+
 	}, 1000)
 }
