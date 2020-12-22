@@ -8,6 +8,15 @@ ercContracts[1] = {name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E0
 ercContracts[2] = {name: "elck", addr: "0xdd3a8f6793afbfa8d7c8e2b19106175dccabec41"}
 ercContracts[3] = {name: "csne", addr: "0x7245B0fe11c4AE2978c8a8D29f3b74477CE6F789"}
 
+trcContracts[0] = {name: "t2x", addr: "THsSSczBw9RRMJWYL5j2MtcgaPasL2xPGP"}
+trcContracts[1] = {name: "cse", addr: "TVs1rRWrBkgQ5zxksYJuCeGthFohjKUGyy"}
+trcContracts[4] = {name: "lck", addr: "TXZp52GAUSRxiuKN2wJkwzgyqaosurKJ6r"}
+trcContracts[2] = {name: "dsp", addr: "TUCjCMAwbpmeACMBkedFh9N5u3fUmpCrQ7"}
+trcContracts[3] = {name: "gcp", addr: "TVXRW7L5dT9NAAiEUoasVYCYhyPyWbVyYB"}
+trcContracts[5] = {name: "msx", addr: "TFSCWYsykYeycgwfWNbbDLjQsH1JLtNEdC"}
+trcContracts[6] = {name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ"}
+trcContracts[8] = {name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"}
+trcContracts[7] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
 
 
 window.addEventListener('load', function () {
@@ -27,7 +36,6 @@ window.addEventListener('load', function () {
 function setUpErc() {
 
 	for(var i = 0; i < ercContracts.length; i++){
-		console.log("I: " + i)
 
 		ercContract = new web3.eth.Contract(ercAbi, ercContracts[i].addr)
 		if (!ercContract) {
@@ -70,7 +78,8 @@ function setUpTrc() {
 }
 
 function displayInfo(contract, index, type){
-	console.log("Index: " + index)
+	console.log(contract[index].name)
+	
     contract.methods.currentDay().call({
         shouldPollResponse: true
     }).then(res => {
