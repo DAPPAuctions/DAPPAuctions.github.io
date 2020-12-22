@@ -21,12 +21,13 @@ body {
 
 table {
     margin-top: 30px;
-    width: 100%
+    width: 100%;
 }
 
 table td {
     padding: 8px;
-    position: relative
+    position: relative;
+	width: 100%;
 }
 
 table td:first-child {
@@ -41,8 +42,8 @@ table td:first-child {
 }
 
 .value {
-    padding: 0 30px;
-    font-weight: 700
+    padding: 0 10px;
+    font-weight: 300
 }
 
 h1 {
@@ -57,30 +58,13 @@ h1 {
     margin: auto auto 180px
 }
 
-#tron,
-#wise {
+#tron{
     position: relative;
     padding: 25px 40px 40px
 }
 
 #tron {
     background: hsla(0, 0%, 100%, .09)
-}
-
-#wise {
-    background: hsla(0, 0%, 100%, .04);
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    min-width: 255px
-}
-
-#wise,
-#wise .info>span {
-    display: flex
 }
 
 .ribbon {
@@ -167,11 +151,6 @@ a:hover svg {
     height: 30px
 }
 
-.toolbar-icon.merch {
-    right: auto;
-    left: 20px
-}
-
 #footer {
     text-align: center;
     padding: 30px;
@@ -219,15 +198,6 @@ a:hover svg {
     top: unset;
     opacity: 1;
     fill: #fff
-}
-
-.ref-link svg.merch-icon {
-    fill: #e7e025
-}
-
-.merch-icon {
-    width: 20px;
-    height: 20px
 }
 
 .logo {
@@ -328,77 +298,10 @@ td.position {
     margin-top: 30px
 }
 
-#wise-content {
-    margin: 5px 0 15px
-}
-
-#wise-content .supply {
-    margin: 9px 0;
-    font-size: 20px;
-    font-weight: 700
-}
-
-#wise-content .info {
-    display: flex;
-    background: hsla(0, 0%, 100%, .04);
-    padding: 13px 30px 19px;
-    margin-top: 26px
-}
-
-#wise-content .info>div {
-    display: flex;
-    flex-direction: column;
-    margin: 0 13px
-}
-
-#wise-content .info>div:first-child {
-    margin-left: 0
-}
-
-#wise-content .info>div:last-child {
-    margin-right: 0
-}
-
-#wise-content .info>div span:first-child {
-    font-weight: 700;
-    font-size: 24px
-}
-
-#wise-content .info>div span:last-child {
-    font-size: 14px;
-    opacity: .6
-}
-
-#wise-content .day-icon {
-    display: inline-flex;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    left: -2px;
-    border: 2px solid #fff
-}
-
-#wise-content .day-icon svg {
-    width: 11px;
-    height: 11px;
-    position: static;
-    opacity: 1;
-    fill: #fff
-}
-
 .small-label {
     font-weight: 700;
     font-size: 14px;
     opacity: .5
-}
-
-.wise-logo {
-    opacity: .2;
-    height: 130px;
-    width: 130px
 }
 
 #timer {
@@ -519,37 +422,6 @@ td.position {
     left: calc(50% - 8px)
 }
 
-#wise-timer {
-    font-size: 14px;
-    opacity: .8;
-    transition: opacity .4s ease-in;
-    display: block;
-    margin: 17px 0 10px;
-    min-height: 20px
-}
-
-#wise-timer:empty {
-    opacity: 0
-}
-
-#table-wrapper {
-    overflow: auto
-}
-
-#wise .button {
-    position: relative
-}
-
-#wise .button svg {
-    fill: #2fa288;
-    opacity: 1;
-    position: absolute;
-    top: 15px;
-    left: 23px;
-    width: 20px;
-    height: 20px
-}
-
 @media only screen and (max-width:795px) {
     body {
         font-size: 16px
@@ -560,12 +432,7 @@ td.position {
         margin-right: 10px
     }
 
-    #wise-content .supply {
-        font-size: 19px
-    }
-
-    #tron,
-    #wise {
+    #tron{
         padding: 25px 29px 40px
     }
 }
@@ -613,10 +480,6 @@ td.position {
         margin: 0
     }
 
-    #wise {
-        margin-top: 30px
-    }
-
     .header {
         width: 66px;
         min-width: unset
@@ -652,18 +515,11 @@ td.position {
         display: none
     }
 
-    #wise {
-        min-width: unset;
-        width: 100%;
-        box-sizing: border-box
-    }
-
     #eth .header {
         width: 85px !important
     }
 
-    #tron,
-    #wise {
+    #tron{
         padding: 25px 15px 15px
     }
 }
@@ -673,8 +529,7 @@ td.position {
         font-size: 15px
     }
 
-    #tron,
-    #wise {
+    #tron{
         padding: 25px 5px 5px
     }
 }
