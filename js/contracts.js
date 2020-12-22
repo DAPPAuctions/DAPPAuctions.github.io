@@ -6,7 +6,56 @@ var trcContracts = []
 
 ercContracts[0] = {name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"}
 
-setUpEth()
+window.addEventListener('load', function () {
+    // Load WEB3
+    if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+        console.log("conn")
+        // Or connect to a node
+    } else {
+        web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    }
+
+    window.ethereum.enable()
+
+    const loginPromise = new Promise((resolve, reject) => {
+        if (window.web3) {
+            resolve(true)
+        } else {
+            window.addEventListener('load', () => {
+                let tbAcc = setInterval(() => {
+                    if (window.tronWeb) resolve(true)
+                    clearInterval(tbAcc)
+                }, 200)
+
+                setTimeout(() => {
+                    clearInterval(tbAcc)
+                }, 10000)
+            })
+        }
+    })
+        .then(() => {
+            console.log("web3 logged in")
+            return true
+        })
+        .catch((err) => {
+            console.error('Error while detecting web3', err)
+            return false
+        })
+
+    loginPromise.then((result) => {
+        return new Promise(async (resolve, reject) => {
+
+			setUpEth()
+
+            setInterval(async () => {
+                web3.eth.getAccounts().then(function (result) {
+                    if (window.web3 && user.address !== result[0]) location.reload()
+                })
+            }, 700)
+        })
+    })
+})
 
 function setUpEth() {
     $(`.${ercContracts[0].name}`)[0].innerHTML = "TEST"
