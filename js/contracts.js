@@ -108,12 +108,12 @@ function sortTable(tableId) {
 			shouldSwitch = false;
 
 			x = rows[i].getElementsByTagName("value")
-			console.log(x)
-			console.log(x.innerHTML)
+			console.log(x[0])
+			console.log(x[0].innerHTML)
 
 			y = rows[i + 1].getElementsByClassName("td")
-			console.log(y)
-			console.log(y.innerHTML)
+			console.log(y[4])
+			console.log(y[4].innerHTML)
 
 			
 			if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
