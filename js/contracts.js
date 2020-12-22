@@ -107,7 +107,7 @@ function sortTable(tableId) {
 		for (i = 1; i < (rows.length - 1); i++) {
 			shouldSwitch = false;
 
-			x = rows[i].getElementsByClassName("value")
+			x = rows[i].getElementsByTagName"value")
 			console.log(x)
 			console.log(x.innerHTML)
 			console.log(parseInt(x.innerHTML))
