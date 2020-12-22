@@ -110,7 +110,7 @@ function sortTable(tableId) {
 			x = rows[i].getElementsByName("value")[0];
 			console.log(x)
 
-			y = rows[i + 1].getElementsById("value")[0];
+			y = rows[i + 1].getElementById("value")[0];
 			console.log(y)
 
 			if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
