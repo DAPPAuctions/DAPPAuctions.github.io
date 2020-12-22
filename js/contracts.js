@@ -109,7 +109,7 @@ function sortTable(tableId) {
 
 			x = rows[i].getElementsByTagName("value")
 			console.log(x[0])
-			console.log(x[0].innerHTML)
+			console.log(x.innerHTML)
 
 			y = rows[i + 1].getElementsByClassName("td")
 			console.log(y[4])
