@@ -107,9 +107,11 @@ function sortTable(tableId) {
 		for (i = 1; i < (rows.length - 1); i++) {
 			shouldSwitch = false;
 
-			x = rows[i].getElementsByClassName("value")[0];
-			y = rows[i + 1].getElementsByClassName("value")[0];
+			x = rows[i].getElementsByName("value")[0];
 			console.log(x)
+
+			y = rows[i + 1].getElementsById("value")[0];
+			console.log(y)
 
 			if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
 			//if so, mark as a switch and break the loop:
