@@ -123,7 +123,7 @@ function sortTable(tableId) {
 	}
 	
 	setInterval({
-		if( $(`.value`)[$(`.value`).length].innerHTML == "---" && tableId == "eth" )
+		if( $(`.eth`).length>1)//[$(`.eth`).length].tr.getElementsByClassName("value")[0].innerHTML == "---" && tableId == "eth" )
 			sortTable("eth")
 		else if( $(`.value`)[$(`.value`).length].innerHTML == "---" && tableId == "trx")
 				sortTable("trx")
