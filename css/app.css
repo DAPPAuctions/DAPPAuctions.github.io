@@ -25,8 +25,7 @@ table {
 }
 
 table tr {
-	border-bottom: 1px;
-	border-bottom-color: #f54290;
+	border-bottom: 2px solid #f54290;
 }
 
 table td {
