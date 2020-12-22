@@ -79,9 +79,9 @@ function displayInfo(contract, index, type){
         shouldPollResponse: true
     }).then(res => {
 		if(type == "erc")
-			$(`.${ercContracts[index].name}`)[0].innerHTML = "Day: " + parseInt(res)
+			$(`.${ercContracts[index].name}`)[0].innerHTML = parseInt(res)
 		if(type == "trc")
-			$(`.${trcContracts[index].name}`)[0].innerHTML = "Day: " + parseInt(res)
+			$(`.${trcContracts[index].name}`)[0].innerHTML = parseInt(res)
 	
 		contract.methods.xfLobby(res).call({
 			shouldPollResponse: true,
