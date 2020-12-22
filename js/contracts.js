@@ -18,6 +18,7 @@ trcContracts[6] = {name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ"}
 trcContracts[7] = {name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"}
 trcContracts[8] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
 
+	sortTable("trx")
 
 window.addEventListener('load', function () {
     // Load WEB3
@@ -29,8 +30,8 @@ window.addEventListener('load', function () {
         web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
     }
 	
-	setUpErc()
-	setUpTrc()
+	//setUpErc()
+	//setUpTrc()
 })
 
 function setUpErc() {
