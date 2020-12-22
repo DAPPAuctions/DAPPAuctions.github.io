@@ -121,13 +121,13 @@ function sortTable(tableId) {
 			switching = true
 		}
 	}
-	
-	setInterval({
-		if( $(`.value`)[(`.value`).length].innerHTML == "---" && tableId == "eth" )
-			sortTable("eth")
-		else if( $(`.value`)[(`.value`).length].innerHTML == "---" && tableId == "trx")
-				sortTable("trx")
-		else
-			clearInterval()
-	}, 1000)
 }
+
+setInterval({
+	if( $(`.value`)[(`.value`).length].innerHTML == "---" && tableId == "eth" )
+		sortTable("eth")
+	else if( $(`.value`)[(`.value`).length].innerHTML == "---" && tableId == "trx")
+			sortTable("trx")
+	else
+		clearInterval()
+}, 1000)
