@@ -24,6 +24,11 @@ table {
     width: 100%
 }
 
+table tr {
+	border-bottom: 1px;
+	border-bottom-color: #f54290;
+}
+
 table td {
     padding: 8px;
     position: relative
