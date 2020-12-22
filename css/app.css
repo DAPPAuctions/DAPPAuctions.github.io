@@ -29,10 +29,6 @@ table td {
     position: relative
 }
 
-table td:first-child {
-    width: 10px
-}
-
 .header {
     background: hsla(0, 0%, 100%, .09);
     width: 85px;
