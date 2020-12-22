@@ -129,7 +129,7 @@ function sortTable(tableId) {
 			sortTable("trx")
 		}
 }
-
+/*
 var checkSort = setInterval({
 	
 	if( $(`.eth`).length>1)//[$(`.eth`).length].tr.getElementsByClassName("value")[0].innerHTML == "---" && tableId == "eth" )
@@ -137,4 +137,4 @@ var checkSort = setInterval({
 	else if( $(`.value`)[$(`.value`).length].innerHTML == "---" && tableId == "trx")
 			sortTable("trx")
 
-}, 1000)
+}, 1000)*/
