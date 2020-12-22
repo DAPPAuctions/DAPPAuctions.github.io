@@ -123,9 +123,9 @@ function sortTable(tableId) {
 	}
 	
 	setInterval({
-		if( $('.value')[$('.value').length].innerHTML == "---" && tableId == "eth" )
+		if( $(`.value`)[(`.value`).length].innerHTML == "---" && tableId == "eth" )
 			sortTable("eth")
-		else if($('.value')[$('.value').length].innerHTML == "---" && tableId == "trx")
+		else if( $(`.value`)[(`.value`).length].innerHTML == "---" && tableId == "trx")
 				sortTable("trx")
 		else
 			clearInterval()
