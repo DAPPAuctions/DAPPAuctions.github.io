@@ -183,7 +183,6 @@
                     <td class="header">
                         <a href="https://minershares.net/?page=auction&amp;ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="MSX">
                             MSX
-                            <span class="new-tag">NEW</span>
                         </a>
                     </td>
                     <td class="header msx">Day</td>
@@ -334,6 +333,8 @@ setInterval(function time() {
 	  var table, rows, switching, i, x, y, shouldSwitch;
 	  table = document.getElementById(tableId);
 	  switching = true;
+		  console.log(table)
+
 
 	  while (switching) {
 		switching = false;
@@ -341,12 +342,11 @@ setInterval(function time() {
 
 		for (i = 1; i < (rows.length - 1); i++) {
 		  shouldSwitch = false;
-		  /*Get the two elements you want to compare,
-		  one from current row and one from the next:*/
-		  x = rows[i].getElementsByTagName("value")[0];
-		  y = rows[i + 1].getElementsByTagName("value")[0];
+
+		  x = rows[i].getElementsByTagName("TD")[4];
+		  y = rows[i + 1].getElementsByTagName("TD")[4];
 		  console.log(parseInt(x.innerHTML))
-		  //check if the two rows should switch place:
+
 		  if (parseInt(x.innerHTML) < parseInt(y.innerHTML)) {
 			//if so, mark as a switch and break the loop:
 			shouldSwitch = true;
