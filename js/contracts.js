@@ -3,8 +3,12 @@ var ercContract, trcContract
 var ercContracts = []
 var trcContracts = []
 
+ercContracts[0] = {name: "e2x", addr: "0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6"}
+ercContracts[1] = {name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"}
+ercContracts[2] = {name: "elck", addr: "0xdd3a8f6793afbfa8d7c8e2b19106175dccabec41"}
+ercContracts[3] = {name: "csne", addr: "0x7245B0fe11c4AE2978c8a8D29f3b74477CE6F789"}
 
-ercContracts[0] = {name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"}
+
 
 window.addEventListener('load', function () {
     // Load WEB3
@@ -17,8 +21,6 @@ window.addEventListener('load', function () {
     }
 	
 	setUpEth()
-
-    window.ethereum.enable()
 
 })
 
