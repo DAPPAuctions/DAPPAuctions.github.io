@@ -53,13 +53,13 @@ h1 {
     margin: auto auto 180px
 }
 
-#tron,
+#trx,
 #wise {
     position: relative;
     padding: 25px 40px 40px
 }
 
-#tron {
+#trx {
     background: hsla(0, 0%, 100%, .09)
 }
 
@@ -560,7 +560,7 @@ td.position {
         font-size: 19px
     }
 
-    #tron,
+    #trx,
     #wise {
         padding: 25px 29px 40px
     }
@@ -658,7 +658,7 @@ td.position {
         width: 85px !important
     }
 
-    #tron,
+    #trx,
     #wise {
         padding: 25px 15px 15px
     }
@@ -669,7 +669,7 @@ td.position {
         font-size: 15px
     }
 
-    #tron,
+    #trx,
     #wise {
         padding: 25px 5px 5px
     }
