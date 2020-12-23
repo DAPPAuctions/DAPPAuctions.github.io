@@ -49,7 +49,6 @@ function setUpETH() {
 		displayInfo(ethContract, i, "eth")
 		
 	}
-	sortTable("eth")
 }
 
 function setUpTRX() {
