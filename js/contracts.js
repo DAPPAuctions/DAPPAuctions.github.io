@@ -51,7 +51,7 @@ function setUpETH() {
 	}
 }
 
-function setUpTRX() {
+async function setUpTRX() {
 
 	for(var i = 0; i < trxContracts.length; i++){
 		trx(i)
