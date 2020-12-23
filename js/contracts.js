@@ -122,10 +122,12 @@ function sortTable(tableId) {
 		}
 	}
 	
-	if( $(`.value`)[$(`.eth`).rows.length - 1].innerHTML == "---" && tableId == "eth" ){
+	var ethRows = document.getElementById("eth")
+	var trxRows = document.getElementById("trx")
+	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && tableId == "eth" ){
 		sortTable("eth")
 	}else 
-		if( $(`.value`)[$(`.value`).length - 1].innerHTML == "---" && tableId == "trx"){
+		if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && tableId == "trx"){
 			sortTable("trx")
 		}
 }
