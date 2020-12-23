@@ -106,15 +106,16 @@ function sortTable(tableId) {
 
 			x = rows[i].getElementsByClassName("value")
 			y = rows[i + 1].getElementsByClassName("value")
-			
+			console.log(parseInt(x[0].innerHTML))
 			if (parseInt(x[0].innerHTML) < parseInt(y[0].innerHTML)) {
-			shouldSwitch = true
-			break
+				shouldSwitch = true
+				break
 			}
 		}
 		if (shouldSwitch) {
 			rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
 			switching = true
+			console.log("swappy")
 		}
 	}
 }
@@ -131,8 +132,11 @@ function checkSort(){
 	}else if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && tableId == "trx"){
 		sortTable("trx")
 		console.log(trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML)
-	}else
+	}else{
 		clearInterval(cs)
+		sortTable("eth")
+		sortTable("trx")
+	}
 }
 
 var cs = setTimeout(() => {
