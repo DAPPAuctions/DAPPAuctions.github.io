@@ -135,7 +135,6 @@ function checkSort(){
 
 	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "0.00" ){
 		sortTable("trx")
-		clearInterval(cs)
 	}
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "0.00" ){
 		sortTable("eth")
@@ -144,4 +143,4 @@ function checkSort(){
 
 var cs = setInterval(() => {
 	checkSort()
-}, 250)
+}, 100)
