@@ -25,13 +25,16 @@ window.addEventListener('load', function () {
 	const fullNode = new HttpProvider('https://api.trongrid.io')
 	const solidityNode = new HttpProvider('https://api.trongrid.io')
 	const eventServer = new HttpProvider('https://api.trongrid.io')
-	const privateKey = '9e8979d8a75190781695505be67635a2350d1c6cc86e727e28a8d9a8fdd55d12';
 
-	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, privateKey)
+	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer)
 	
+	setUp()
+})
+
+function setUp(){
 	setUpETH()
 	setUpTRX()
-})
+}
 
 function setUpETH() {
 
