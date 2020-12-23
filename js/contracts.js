@@ -3,21 +3,22 @@ var ethContract, trxContract
 var ethContracts = []
 var trxContracts = []
 
-ethContracts[0] = {name: "e2x", addr: "0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6"}
-ethContracts[1] = {name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"}
-ethContracts[2] = {name: "elck", addr: "0xdd3a8f6793afbfa8d7c8e2b19106175dccabec41"}
-ethContracts[3] = {name: "csne", addr: "0x7245B0fe11c4AE2978c8a8D29f3b74477CE6F789"}
+ethContracts.push({name: "e2x", addr: "0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6"})
+ethContracts.push({name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"})
+ethContracts.push({name: "elck", addr: "0xdd3a8f6793afbfa8d7c8e2b19106175dccabec41"})
+ethContracts.push({name: "csne", addr: "0x7245B0fe11c4AE2978c8a8D29f3b74477CE6F789"})
 
-trxContracts[0] = {name: "t2x", addr: "THsSSczBw9RRMJWYL5j2MtcgaPasL2xPGP"}
-trxContracts[1] = {name: "cse", addr: "TVs1rRWrBkgQ5zxksYJuCeGthFohjKUGyy"}
-trxContracts[2] = {name: "lck", addr: "TXZp52GAUSRxiuKN2wJkwzgyqaosurKJ6r"}
-trxContracts[3] = {name: "dsp", addr: "TUCjCMAwbpmeACMBkedFh9N5u3fUmpCrQ7"}
-trxContracts[4] = {name: "gcp", addr: "TVXRW7L5dT9NAAiEUoasVYCYhyPyWbVyYB"}
-trxContracts[5] = {name: "msx", addr: "TFSCWYsykYeycgwfWNbbDLjQsH1JLtNEdC"}
-trxContracts[6] = {name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ"}
-trxContracts[7] = {name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"}
-trxContracts[8] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
-trxContracts[9] = {name: "bub", addr: "TDbygTtZNsS1xsSNKcdsz3h45ma8bXwv3F"}
+trxContracts.push({name: "t2x", addr: "THsSSczBw9RRMJWYL5j2MtcgaPasL2xPGP"})
+trxContracts.push({name: "bub", addr: "TDbygTtZNsS1xsSNKcdsz3h45ma8bXwv3F"})
+trxContracts.push({name: "cse", addr: "TVs1rRWrBkgQ5zxksYJuCeGthFohjKUGyy"})
+trxContracts.push({name: "lck", addr: "TXZp52GAUSRxiuKN2wJkwzgyqaosurKJ6r"})
+trxContracts.push({name: "dsp", addr: "TUCjCMAwbpmeACMBkedFh9N5u3fUmpCrQ7"})
+trxContracts.push({name: "gcp", addr: "TVXRW7L5dT9NAAiEUoasVYCYhyPyWbVyYB"})
+trxContracts.push({name: "msx", addr: "TFSCWYsykYeycgwfWNbbDLjQsH1JLtNEdC"})
+trxContracts.push({name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ"})
+trxContracts.push({name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"})
+trxContracts.push({name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"})
+
 
 
 window.addEventListener('load', function () {
@@ -49,30 +50,35 @@ function setUpETH() {
 
 function setUpTRX() {
 
+	for(var i = 0; i < trxContracts.length; i++){
+		trx(i)
+	}
+}
+
+async function trx(index){
 	const HttpProvider = TronWeb.providers.HttpProvider;
 	const fullNode = new HttpProvider('https://api.trongrid.io');
 	const solidityNode = new HttpProvider('https://api.trongrid.io');
 	const eventServer = new HttpProvider('https://api.trongrid.io');
 
 	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer);
-
-	for(var i = 0; i < trxContracts.length; i++){
-		trx(i)
-		async function trx(index){
-			tronWeb.setAddress(trxContracts[index].addr);
-			await tronWeb.contract().at(trxContracts[index].addr, function (error, result) {
-				if (!error) {
-					trxContract = result;
-					displayInfo(trxContract, index, "trx")
-				} else{
-					console.error(error);
-					trx(i)
-				}
-			})
-		}
-	}
+	console.log(index)
+	tronWeb.setAddress(trxContracts[index].addr);
+	try{
+		await tronWeb.contract().at(trxContracts[index].addr, function (error, result) {
+			if (!error) {
+				trxContract = result;
+				displayInfo(trxContract, index, "trx")
+			} else{
+				console.error(error);
+				trx(index)
+			}
+		})
+	}catch(e){
+		console.log(e)
+		trx(index)
+	}	
 }
-
 
 function displayInfo(contract, index, type){
 	
