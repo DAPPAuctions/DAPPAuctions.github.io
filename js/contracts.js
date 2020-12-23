@@ -119,8 +119,8 @@ function sortTable(tableId) {
 		}
 		if (shouldSwitch) {
 			rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
-			x2[0].innerHTML = "#"+i+1
-			y2[0].innerHTML = "#"+i
+			x2[0].innerHTML = "#"+ (i + 1)
+			y2[0].innerHTML = "#"+ i
 
 			
 			switching = true
