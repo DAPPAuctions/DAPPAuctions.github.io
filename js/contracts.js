@@ -135,10 +135,10 @@ function checkSort(){
 	var ethRows = eth.rows
 	var trxRows = trx.rows
 
-	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "0.00" && tableId == "eth" ){
+	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "0.00" ){
 		sortTable("eth")
 		console.log(ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML)
-	}else if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "0.00" && tableId == "trx"){
+	}else if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "0.00" ){
 		sortTable("trx")
 		console.log(trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML)
 		clearInterval(cs)
