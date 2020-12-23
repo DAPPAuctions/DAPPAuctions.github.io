@@ -21,9 +21,14 @@ trxContracts[8] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
 window.addEventListener('load', function () {
     web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"));
 	
+	import TronWeb from 'tronweb';
+
 	const HttpProvider = TronWeb.providers.HttpProvider;
-	const fullNode = new HttpProvider("https://127.0.0.1:8090");
-	const tronWeb = new TronWeb(fullNode);
+	const fullNode = new HttpProvider('https://api.trongrid.io');
+	const solidityNode = new HttpProvider('https://api.trongrid.io');
+	const eventServer = new HttpProvider('https://api.trongrid.io');
+	
+	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer);
 	
 	setUpETH()
 	setUpTRX()
