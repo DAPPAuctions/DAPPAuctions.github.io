@@ -19,14 +19,12 @@ trxContracts[7] = {name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"}
 trxContracts[8] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
 
 window.addEventListener('load', function () {
-    // Load WEB3
-    if (typeof web3 !== 'undefined') {
-        web3 = new Web3(web3.currentProvider);
-        console.log("conn")
-        // Or connect to a node
-    } else {
-        web3 = new Web3(Web3.givenProvider || 'ws://some.local-or-remote.node:8546');
-    }
+	if (typeof web3 !== ‘undefined’){
+		web3 = new Web3(web3.currentProvider);
+	}else {
+		// set the provider you want from Web3.providers
+		web3 = new Web3(new Web3.providers.HttpProvider(“http://localhost:8545”));
+	}
 	
 	setUpETH()
 	setUpTRX()
