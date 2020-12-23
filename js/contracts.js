@@ -85,9 +85,9 @@ function displayInfo(contract, index, type){
 			shouldPollResponse: true,
 		}).then(res => {
 			if(type == "eth")
-				$(`.${ethContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e18).toLocaleString()
+				$(`.${ethContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e18)
 			if(type == "trx")
-				$(`.${trxContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e6).toLocaleString()
+				$(`.${trxContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e6)
 		})
 	
 	})
@@ -108,6 +108,9 @@ function sortTable(tableId) {
 
 			x = rows[i].getElementsByClassName("value")
 			y = rows[i + 1].getElementsByClassName("value")
+			x2 = rows[i].getElementsByClassName("#")
+			y2 = rows[i + 1].getElementsByClassName("#")
+			
 			console.log(parseInt(x[0].innerHTML))
 			if (parseInt(x[0].innerHTML) < parseInt(y[0].innerHTML)) {
 				shouldSwitch = true
@@ -116,6 +119,10 @@ function sortTable(tableId) {
 		}
 		if (shouldSwitch) {
 			rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
+			x2[0].innerHTML = "#"+i+1
+			y2[0].innerHTML = "#"+i
+
+			
 			switching = true
 			console.log("swappy")
 		}
