@@ -57,7 +57,7 @@ function setUpTRX() {
 		trx(i)
 		function trx(index){
 			try{
-				await tronWeb.contract().at(trxContracts[i].addr, function (error, result) {
+				tronWeb.contract().at(trxContracts[i].addr, function (error, result) {
 					if (!error) {
 						trxContract = result;
 						displayInfo(trxContract, index, "trx")
