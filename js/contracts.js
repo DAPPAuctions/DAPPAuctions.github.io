@@ -45,6 +45,8 @@ function setUpETH() {
 
 function setUpTRX() {
 
+	const TronWeb = require('web3.min')
+
 	const HttpProvider = TronWeb.providers.HttpProvider;
 	const fullNode = new HttpProvider("https://127.0.0.1:8090")
 	const solidityNode = new HttpProvider("https://127.0.0.1:8090")
