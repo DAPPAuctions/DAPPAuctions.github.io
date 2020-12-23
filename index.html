@@ -333,9 +333,9 @@ setInterval(function time() {
         sec = 59 - d.getUTCSeconds();
 
     for (let i = 0; i < timers.length; i++) {
-        timers[i].innerHTML = 'Closing in ' + zeroPrefix(hours) + 'h : ' + zeroPrefix(min) + 'm : ' + zeroPrefix(sec) + 's';
+        timers[i].innerHTML = 'Auctions End In: ' + zeroPrefix(hours) + 'h : ' + zeroPrefix(min) + 'm : ' + zeroPrefix(sec) + 's';
     }
-}, 1000);
+}, 100);
     </script>
 
 </body>
