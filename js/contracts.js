@@ -19,12 +19,9 @@ trxContracts[7] = {name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"}
 trxContracts[8] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
 
 window.addEventListener('load', function () {
-    // Load WEB3
-    if (typeof web3 !== 'undefined') {
-        web3 = new Web3(web3.currentProvider);
-    } else {
-        web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"));
-    }
+    
+	web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"));
+
 	
 	setUpETH()
 	setUpTRX()
