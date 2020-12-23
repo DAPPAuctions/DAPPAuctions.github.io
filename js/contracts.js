@@ -122,8 +122,11 @@ function sortTable(tableId) {
 		}
 	}
 	
-	var ethRows = document.getElementById("eth")
-	var trxRows = document.getElementById("trx")
+	var eth = document.getElementById("eth")
+	var trx = document.getElementById("trx")
+	var ethRows = eth.rows
+	var trxRows = trx[trx.length - 1].getElementsByClassName("value")
+
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && tableId == "eth" ){
 		sortTable("eth")
 	}else 
