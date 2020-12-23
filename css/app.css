@@ -37,8 +37,8 @@ table td {
     background: hsla(0, 0%, 100%, .09);
     width: 85px;
     padding: 0;
-    position: relative
-	border-bottom: 1px solid #f54290;
+    position: relative;
+	border-bottom: 2px solid #f54290;
 }
 
 .value {
