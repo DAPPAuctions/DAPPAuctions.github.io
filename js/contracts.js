@@ -121,7 +121,9 @@ function sortTable(tableId) {
 			switching = true
 		}
 	}
-	
+}
+
+function checkSort(){
 	var eth = document.getElementById("eth")
 	var trx = document.getElementById("trx")
 	var ethRows = eth.rows
@@ -129,17 +131,12 @@ function sortTable(tableId) {
 
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && tableId == "eth" ){
 		sortTable("eth")
-	}else 
-		if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && tableId == "trx"){
-			sortTable("trx")
-		}
+	}else if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && tableId == "trx"){
+		sortTable("trx")
+	}else
+		clearInterval(cs)
 }
-/*
-var checkSort = setInterval({
-	
-	if( $(`.eth`)[$(`.eth`).length].rows.getElementsByClassName("value")[0].innerHTML == "---" && tableId == "eth" )
-		sortTable("eth")
-	else if( $(`.value`)[$(`.value`).length].innerHTML == "---" && tableId == "trx")
-			sortTable("trx")
 
-}, 1000)*/
+var cs = setInterval({
+	checkSort()
+}, 5000)
