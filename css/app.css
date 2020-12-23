@@ -27,9 +27,6 @@ table {
 table td {
     padding: 0px;
     position: relative;
-	border-bottom: 2px solid #f54290;
-
-
 }
 
 .header {
@@ -38,6 +35,14 @@ table td {
     padding: 0;
     position: relative;
 	border-bottom: 2px solid #000000;
+}
+
+.top-header {
+    background: hsla(0, 0%, 100%, .09);
+    width: 85px;
+    padding: 0;
+    position: relative;
+	border-bottom: 4px solid #000000;
 }
 
 .value {
