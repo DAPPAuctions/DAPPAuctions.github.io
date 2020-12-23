@@ -11,16 +11,16 @@ body {
     justify-content: flex-start;
     flex-direction: column;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5;
     color: #fff;
     background: linear-gradient(45deg, #269c9f, #269f6c) fixed;
-    margin-top: 120px;
+    margin-top: 50px;
     height: calc(100% - 120px)
 }
 
 table {
-    margin-top: 30px;
+    margin-top: 10px;
     width: 100%
 }
 
