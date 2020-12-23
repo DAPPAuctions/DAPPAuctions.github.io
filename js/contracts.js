@@ -43,15 +43,15 @@ function setUpETH() {
 	sortTable("eth")
 }
 
-const TronWeb = require('tronweb')
-
-const HttpProvider = TronWeb.providers.HttpProvider;
-const fullNode = new HttpProvider("https://127.0.0.1:8090");
-const solidityNode = new HttpProvider("https://127.0.0.1:8090");
-const eventServer = new HttpProvider("https://127.0.0.1:8090");
-const tronWeb = new TronWeb(fullNode,solidityNode,eventServer);
-
 function setUpTRX() {
+
+	const TronWeb
+
+	const HttpProvider = TronWeb.providers.HttpProvider;
+	const fullNode = new HttpProvider("https://127.0.0.1:8090")
+	const solidityNode = new HttpProvider("https://127.0.0.1:8090")
+	const eventServer = new HttpProvider("https://127.0.0.1:8090")
+	const tronWeb = new TronWeb(fullNode,solidityNode,eventServer)
 
 	for(var i = 0; i < trxContracts.length; i++){
 		trx(i)
