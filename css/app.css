@@ -25,12 +25,14 @@ table {
 }
 
 table tr {
-	border-bottom: 2px solid #f54290;
+	border-bottom: 5px solid #f54290;
 }
 
 table td {
     padding: 8px;
-    position: relative
+    position: relative;
+	border-bottom: 5px solid #f54290;
+
 }
 
 .header {
@@ -41,7 +43,7 @@ table td {
 }
 
 .value {
-    padding: 5 5px;
+    padding: 2 2px;
     font-weight: 700
 }
 
@@ -624,7 +626,7 @@ td.position {
 
     .header a,
     .value {
-        padding: 5 5px
+        padding: 2px 2px
     }
 
     .header a {
