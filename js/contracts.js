@@ -125,7 +125,7 @@ function sortTable(tableId) {
 	var eth = document.getElementById("eth")
 	var trx = document.getElementById("trx")
 	var ethRows = eth.rows
-	var trxRows = trx[trx.length - 1].getElementsByClassName("value")
+	var trxRows = trx.rows
 
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && tableId == "eth" ){
 		sortTable("eth")
