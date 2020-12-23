@@ -5,14 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DAPP Auctions: Live totals for DAPP auctions!</title>
-    <link href="img/fav.png" rel="shortcut icon">
+    <link href="img/logo.gif" rel="shortcut icon">
     <meta name="description" content="One stop DAPP auction stats!">
     <link rel="stylesheet" href="css/app.css">
 </head>
 
 <body>
     <div id="content">
-        <div id="tron">
+        <div id="all-content">
+            <div><img src="img/logo.gif"></img></div>
             <span class="toolbar-icon" onclick="setUp()">
                 <svg enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
                     <path d="m463.7 162.66-21.211-148.49c-1.744-12.174-16.707-17.233-25.459-8.481l-30.894 30.894c-39.727-23.965-84.829-36.577-131.21-36.577-139.47 0-251.44 109.16-254.93 248.51-0.19 7.617 5.347 14.15 12.876 15.234l59.941 8.569c8.936 1.304 17.249-5.712 17.125-15.058-1.243-91.97 73.039-167.26 164.98-167.26 22.265 0 44.267 4.526 64.6 13.183l-29.78 29.78c-8.697 8.697-3.761 23.706 8.481 25.459l148.49 21.211c9.784 1.475 18.381-7.034 16.978-16.978z" />
@@ -29,7 +30,7 @@
                 
 				<tr class="top-header">
                     <td class="header"></td>
-                    <td class="header">Platform</td>
+                    <td class="header">Name</td>
                     <td class="header">Day</td>
                     <td class="header">ETH</td>
                     <td class="header">Link</td>
@@ -110,7 +111,7 @@
 
 				<tr class="top-header">
                     <td class="header"></td>
-                    <td class="header">Platform</td>
+                    <td class="header">Name</td>
                     <td class="header">Day</td>
                     <td class="header">TRX</td>
                     <td class="header">Link</td>
@@ -291,6 +292,7 @@
                     <td class="header">
                         <a href="https://BUBtoken.github.io/panel/auction.html?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="NUI">
                             BUB
+                            <span class="new-tag">NEW</span>
                         </a>
                     </td>
                     <td class="header bub"><img src="img/loading.gif"></img></td>
@@ -332,6 +334,7 @@
     <script src="js/TronWeb.js"></script>
     <script src="js/web3.min.js"></script>
     <script src="js/contracts.js"></script>
+	
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73262508-12"></script>
 
     <script>

@@ -10,11 +10,11 @@ body {
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-	font-family: "Lucida Console", "Courier New", monospace;
-    font-size: 16px;
-    line-height: 1.5;
+	font-family: "Courier New", "Courier New", monospace;
+    font-size: 20px;
+    line-height: 1;
     color: #fff;
-    background: linear-gradient(45deg, #269c9f, #269f6c) fixed;
+    background: linear-gradient(45deg, #424743, #2f3630) fixed;
     margin-top: 25px;
     height: calc(100% - 120px)
 }
@@ -62,30 +62,13 @@ h1 {
     margin: auto auto 50px
 }
 
-#tron,
-#wise {
+#all-content{
     position: relative;
     padding: 15px 25px 25px
 }
 
-#tron {
+#all-content {
     background: hsla(0, 0%, 100%, .09)
-}
-
-#wise {
-    background: hsla(0, 0%, 100%, .04);
-    text-align: center;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    min-width: 255px
-}
-
-#wise,
-#wise .info>span {
-    display: flex
 }
 
 .ribbon {
@@ -179,7 +162,7 @@ a:hover svg {
 
 #footer {
     text-align: center;
-    padding: 30px;
+    padding: 3px;
     background: hsla(0, 0%, 100%, .06);
     margin-top: auto;
     width: 100%;
@@ -187,10 +170,10 @@ a:hover svg {
 }
 
 .footer-banner {
-    padding: 10px 5px 12px;
+    padding: 3px 3px 12px;
     background: hsla(0, 0%, 100%, .09);
-    border-radius: 4px;
-    margin: 30px 0
+    border-radius: 3px;
+    margin: 5px 0
 }
 
 .header a {
@@ -298,18 +281,18 @@ td.position {
 }
 
 .new-tag {
-    background: #dbdc2c;
+    background: #0079ad;
     position: absolute;
-    top: calc(50% - 8px);
+    top: calc(50% - 12px);
     right: 7px;
-    font-size: 9px;
-    padding: 1px 3px 2px;
+    font-size: 16px;
+    padding: 2px 5px 5px 2px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: #269d95;
-    height: 16px
+    color: #ffffff;
+    height: 20px
 }
 
 #telegram,
@@ -333,77 +316,10 @@ td.position {
     margin-top: 30px
 }
 
-#wise-content {
-    margin: 5px 0 15px
-}
-
-#wise-content .supply {
-    margin: 9px 0;
-    font-size: 20px;
-    font-weight: 700
-}
-
-#wise-content .info {
-    display: flex;
-    background: hsla(0, 0%, 100%, .04);
-    padding: 13px 30px 19px;
-    margin-top: 26px
-}
-
-#wise-content .info>div {
-    display: flex;
-    flex-direction: column;
-    margin: 0 13px
-}
-
-#wise-content .info>div:first-child {
-    margin-left: 0
-}
-
-#wise-content .info>div:last-child {
-    margin-right: 0
-}
-
-#wise-content .info>div span:first-child {
-    font-weight: 700;
-    font-size: 24px
-}
-
-#wise-content .info>div span:last-child {
-    font-size: 14px;
-    opacity: .6
-}
-
-#wise-content .day-icon {
-    display: inline-flex;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    left: -2px;
-    border: 2px solid #fff
-}
-
-#wise-content .day-icon svg {
-    width: 11px;
-    height: 11px;
-    position: static;
-    opacity: 1;
-    fill: #fff
-}
-
 .small-label {
     font-weight: 700;
     font-size: 14px;
     opacity: .5
-}
-
-.wise-logo {
-    opacity: .2;
-    height: 130px;
-    width: 130px
 }
 
 #timer {
@@ -524,35 +440,8 @@ td.position {
     left: calc(50% - 8px)
 }
 
-#wise-timer {
-    font-size: 14px;
-    opacity: .8;
-    transition: opacity .4s ease-in;
-    display: block;
-    margin: 17px 0 10px;
-    min-height: 20px
-}
-
-#wise-timer:empty {
-    opacity: 0
-}
-
 #table-wrapper {
     overflow: auto
-}
-
-#wise .button {
-    position: relative
-}
-
-#wise .button svg {
-    fill: #2fa288;
-    opacity: 1;
-    position: absolute;
-    top: 15px;
-    left: 23px;
-    width: 20px;
-    height: 20px
 }
 
 @media only screen and (max-width:795px) {
@@ -565,12 +454,7 @@ td.position {
         margin-right: 10px
     }
 
-    #wise-content .supply {
-        font-size: 19px
-    }
-
-    #tron,
-    #wise {
+    #all-content{
         padding: 25px 29px 40px
     }
 }
@@ -618,9 +502,6 @@ td.position {
         margin: 0
     }
 
-    #wise {
-        margin-top: 30px
-    }
 
     .header {
         width: 66px;
@@ -657,18 +538,11 @@ td.position {
         display: none
     }
 
-    #wise {
-        min-width: unset;
-        width: 100%;
-        box-sizing: border-box
-    }
-
     #eth .header {
         width: 85px !important
     }
 
-    #tron,
-    #wise {
+    #all-content{
         padding: 25px 15px 15px
     }
 }
@@ -678,8 +552,7 @@ td.position {
         font-size: 15px
     }
 
-    #tron,
-    #wise {
+    #all-content{
         padding: 25px 5px 5px
     }
 }

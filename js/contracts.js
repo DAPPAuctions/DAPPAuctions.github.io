@@ -28,12 +28,16 @@ window.addEventListener('load', function () {
 	setUp()
 })
 
-function setUp(){
-	setUpETH()
-	setUpTRX()
+async function setUp(){
+	await setUpETH()
+	await setUpTRX()
+	
+	setInterval(() => {
+		checkSort()
+	}, 100)
 }
 
-function setUpETH() {
+async function setUpETH() {
 
 	for(var i = 0; i < ethContracts.length; i++){
 
@@ -43,15 +47,15 @@ function setUpETH() {
 			return void 0
 		}
 		
-		displayInfo(ethContract, i, "eth")
+		await displayInfo(ethContract, i, "eth")
 		
 	}
 }
 
-function setUpTRX() {
+async function setUpTRX() {
 
 	for(var i = 0; i < trxContracts.length; i++){
-		trx(i)
+		await trx(i)
 	}
 }
 
@@ -62,7 +66,6 @@ async function trx(index){
 	const eventServer = new HttpProvider('https://api.trongrid.io');
 
 	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer);
-	console.log(index)
 	tronWeb.setAddress(trxContracts[index].addr);
 	try{
 		await tronWeb.contract().at(trxContracts[index].addr, function (error, result) {
@@ -94,9 +97,9 @@ function displayInfo(contract, index, type){
 			shouldPollResponse: true,
 		}).then(res => {
 			if(type == "eth")
-				$(`.${ethContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e18)
+				$(`.${ethContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e18).toFixed(3)
 			if(type == "trx")
-				$(`.${trxContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e6)
+				$(`.${trxContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e6).toFixed(0)
 		})
 	
 	})
@@ -118,8 +121,7 @@ function sortTable(tableId) {
 			y = rows[i + 1].getElementsByClassName("value")
 			x2 = rows[i].getElementsByClassName("#")
 			y2 = rows[i + 1].getElementsByClassName("#")
-			
-			if (parseInt(x[0].innerHTML) < parseInt(y[0].innerHTML)) {
+			if (parseInt(x[0].innerHTML.replace(/,/g, ''), 10) < parseInt(y[0].innerHTML.replace(/,/g, ''), 10)) {
 				shouldSwitch = true
 				break
 			}
@@ -140,15 +142,13 @@ function checkSort(){
 	var trx = document.getElementById("trx")
 	var ethRows = eth.rows
 	var trxRows = trx.rows
-
-	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" ){
+	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" )
+		setUpTRX()
+	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" )
 		sortTable("trx")
-	}
-	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" ){
+	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" )
+		setUpETH()
+	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" )
 		sortTable("eth")
-	}
+	
 }
-
-var cs = setInterval(() => {
-	checkSort()
-}, 100)
