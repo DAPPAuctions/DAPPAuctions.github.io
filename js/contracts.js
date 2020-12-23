@@ -55,7 +55,7 @@ async function setUpTRX() {
 
 	for(var i = 0; i < trxContracts.length; i++){
 		trx(i)
-		function trx(index){
+		async function trx(index){
 			try{
 				await tronWeb.contract().at(trxContracts[i].addr, function (error, result) {
 					if (!error) {
