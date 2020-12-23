@@ -55,23 +55,19 @@ function setUpTRX() {
 
 	for(var i = 0; i < trxContracts.length; i++){
 		trx(i)
-		function trx(index){
-			try{
-				tronWeb.contract().at(trxContracts[i].addr, function (error, result) {
-					if (!error) {
-						trxContract = result;
-						displayInfo(trxContract, index, "trx")
-					} else{
-						console.error(error);
-						trx(i)
-					}
-				})
-			}catch(e){
-				console.log(e)
-				trx(i)
-			}
-		}
 	}
+}
+
+function trx(index){
+	tronWeb.contract().at(trxContracts[i].addr, function (error, result) {
+		if (!error) {
+			trxContract = result;
+			displayInfo(trxContract, index, "trx")
+		} else{
+			console.error(error);
+			trx(i)
+		}
+	})
 }
 
 function displayInfo(contract, index, type){
