@@ -110,7 +110,6 @@ function sortTable(tableId) {
 			x2 = rows[i].getElementsByClassName("#")
 			y2 = rows[i + 1].getElementsByClassName("#")
 			
-			console.log(x[0].innerHTML + "<" + y[0].innerHTML)
 			if (parseInt(x[0].innerHTML) < parseInt(y[0].innerHTML)) {
 				shouldSwitch = true
 				break
