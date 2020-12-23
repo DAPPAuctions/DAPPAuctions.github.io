@@ -103,7 +103,6 @@ function sortTable(tableId) {
 		rows = table.rows
 
 		for (i = 1; i < (rows.length - 1); i++) {
-			console.log(i)
 			shouldSwitch = false;
 
 			x = rows[i].getElementsByClassName("value")
@@ -119,12 +118,11 @@ function sortTable(tableId) {
 		}
 		if (shouldSwitch) {
 			rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
+			
 			x2[0].innerHTML = "#"+ (i + 1)
 			y2[0].innerHTML = "#"+ i
-
 			
 			switching = true
-			console.log("swappy")
 		}
 	}
 }
@@ -137,12 +135,10 @@ function checkSort(){
 
 	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "0.00" ){
 		sortTable("trx")
-		console.log(trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML)
 		clearInterval(cs)
 	}
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "0.00" ){
 		sortTable("eth")
-		console.log(ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML)
 	}
 }
 
