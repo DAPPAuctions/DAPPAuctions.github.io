@@ -139,6 +139,6 @@ function checkSort(){
 		clearInterval(cs)
 }
 
-var cs = setInterval({
+var cs = setTimeout(() => {
 	checkSort()
 }, 5000)
