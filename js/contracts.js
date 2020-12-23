@@ -17,18 +17,13 @@ trxContracts[5] = {name: "msx", addr: "TFSCWYsykYeycgwfWNbbDLjQsH1JLtNEdC"}
 trxContracts[6] = {name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ"}
 trxContracts[7] = {name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"}
 trxContracts[8] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
+trxContracts[9] = {name: "bub", addr: "TDbygTtZNsS1xsSNKcdsz3h45ma8bXwv3F"}
+
 
 window.addEventListener('load', function () {
 	
     web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"))
-	
-	const HttpProvider = TronWeb.providers.HttpProvider
-	const fullNode = new HttpProvider('https://api.trongrid.io')
-	const solidityNode = new HttpProvider('https://api.trongrid.io')
-	const eventServer = new HttpProvider('https://api.trongrid.io')
-
-	const tronWeb = new TronWeb( fullNode, solidityNode, eventServer )
-	
+				
 	setUp()
 })
 
@@ -54,26 +49,30 @@ function setUpETH() {
 
 function setUpTRX() {
 
+	const HttpProvider = TronWeb.providers.HttpProvider;
+	const fullNode = new HttpProvider('https://api.trongrid.io');
+	const solidityNode = new HttpProvider('https://api.trongrid.io');
+	const eventServer = new HttpProvider('https://api.trongrid.io');
+
+	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer);
+
 	for(var i = 0; i < trxContracts.length; i++){
 		trx(i)
-		function trx(index){
-			try{
-				tronWeb.contract().at(trxContracts[i].addr, function (error, result) {
-					if (!error) {
-						trxContract = result;
-						displayInfo(trxContract, index, "trx")
-					} else{
-						console.error(error);
-						trx(i)
-					}
-				})
-			}catch(e){
-				console.log(e)
-				trx(i)
-			}
+		async function trx(index){
+			tronWeb.setAddress(trxContracts[index].addr);
+			await tronWeb.contract().at(trxContracts[index].addr, function (error, result) {
+				if (!error) {
+					trxContract = result;
+					displayInfo(trxContract, index, "trx")
+				} else{
+					console.error(error);
+					trx(i)
+				}
+			})
 		}
 	}
 }
+
 
 function displayInfo(contract, index, type){
 	
