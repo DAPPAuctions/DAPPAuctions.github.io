@@ -131,8 +131,10 @@ function checkSort(){
 
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && tableId == "eth" ){
 		sortTable("eth")
+		console.log(ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML)
 	}else if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && tableId == "trx"){
 		sortTable("trx")
+		console.log(trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML)
 	}else
 		clearInterval(cs)
 }
