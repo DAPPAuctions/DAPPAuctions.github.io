@@ -19,14 +19,27 @@ trxContracts[7] = {name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"}
 trxContracts[8] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
 
 window.addEventListener('load', function () {
-    web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"));
+    web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"))
 	
 	const HttpProvider = TronWeb.providers.HttpProvider;
-	const fullNode = new HttpProvider('https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb');
-	const solidityNode = new HttpProvider('https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb');
-	const eventServer = new HttpProvider('https://api.trongrid.io');
-	
-	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer);
+	const fullNode = new HttpProvider('https://api.trongrid.io')
+	const solidityNode = new HttpProvider('https://api.trongrid.io')
+	const eventServer = new HttpProvider('https://api.trongrid.io')
+	const privateKey = '9e8979d8a75190781695505be67635a2350d1c6cc86e727e28a8d9a8fdd55d12';
+
+	hobby
+remove
+profit
+expire
+near
+suspect
+parade
+provide
+jeans
+tip
+regular
+spawn
+	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer, )
 	
 	setUpETH()
 	setUpTRX()
@@ -62,7 +75,7 @@ function setUpTRX() {
 						console.error(error);
 						trx(i)
 					}
-				});
+				})
 			}catch(e){
 				console.log(e)
 				trx(i)
