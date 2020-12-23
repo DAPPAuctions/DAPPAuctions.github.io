@@ -18,11 +18,7 @@ trxContracts[6] = {name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ"}
 trxContracts[7] = {name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"}
 trxContracts[8] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
 
-window.addEventListener('load', function () {
-    web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"))
-		
-	setUp()
-})
+setUp()
 
 function setUp(){
 	setUpETH()
@@ -30,6 +26,8 @@ function setUp(){
 }
 
 function setUpETH() {
+	
+    web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"))
 
 	for(var i = 0; i < ethContracts.length; i++){
 
@@ -43,17 +41,19 @@ function setUpETH() {
 }
 
 function setUpTRX() {
+	
 	const HttpProvider = TronWeb.providers.HttpProvider;
 	const fullNode = new HttpProvider('https://api.trongrid.io')
 	const solidityNode = new HttpProvider('https://api.trongrid.io')
 	const eventServer = new HttpProvider('https://api.trongrid.io')
 
 	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer)
+	
 	for(var i = 0; i < trxContracts.length; i++){
-		
 		trx(i)
-		async function trx(index){
-			await tronWeb.contract().at(trxContracts[i].addr, function (error, result){
+		function trx(index){
+			
+			tronWeb.contract().at(trxContracts[i].addr, function (error, result){
 				if (!error){
 					displayInfo(result, index, "trx")
 				}else{
