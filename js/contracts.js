@@ -22,11 +22,8 @@ window.addEventListener('load', function () {
     
 	web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"));
 
-	
 	setUpETH()
-	setUpTRX()
 })
-
 function setUpETH() {
 
 	for(var i = 0; i < ethContracts.length; i++){
@@ -43,9 +40,41 @@ function setUpETH() {
 	sortTable("eth")
 }
 
+const loginPromise = new Promise((resolve, reject) => {
+        if (window.tronWeb && window.tronWeb.ready) {
+            resolve(true)
+        } else {
+            window.addEventListener('load', () => {
+                let tbAcc = setInterval(() => {
+                    if (window.tronWeb && window.tronWeb.ready) resolve(true)
+                    clearInterval(tbAcc)
+                }, 200)
+
+                setTimeout(() => {
+                    clearInterval(tbAcc)
+                }, 10000)
+            })
+        }
+    }).then(() => {
+        console.log("Tronweb installed and logged in")
+        return true
+    }).catch((err) => {
+        console.error('Error while detecting tronweb', err)
+        return false
+    })
+loginPromise.then((result) => {
+    return new Promise((resolve, reject) => {
+		try{
+			setUpTRX()
+		}catch(e){
+			setUpTRX()
+		}
+    })
+})
+
 function setUpTRX() {
 
-	const TronWeb = require('web3.min')
+	const TronWeb = require('tronweb')
 
 	const HttpProvider = TronWeb.providers.HttpProvider;
 	const fullNode = new HttpProvider("https://127.0.0.1:8090")
