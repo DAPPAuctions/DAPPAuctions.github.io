@@ -25,13 +25,11 @@ table {
 }
 
 table tr {
-	border-bottom: 5px solid #f54290;
 }
 
 table td {
     padding: 8px;
     position: relative;
-	border-bottom: 5px solid #f54290;
 
 }
 
@@ -40,6 +38,7 @@ table td {
     width: 85px;
     padding: 0;
     position: relative
+	border-bottom: 1px solid #f54290;
 }
 
 .value {
