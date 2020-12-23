@@ -1,145 +1,362 @@
-const ethAbi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"amount","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"sender","type":"address"},{"name":"recipient","type":"address"},{"name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"address"},{"name":"","type":"uint256"}],"name":"stakeLists","outputs":[{"name":"stakeId","type":"uint40"},{"name":"stakedSuns","type":"uint72"},{"name":"stakeShares","type":"uint72"},{"name":"lockedDay","type":"uint16"},{"name":"stakedDays","type":"uint16"},{"name":"unlockedDay","type":"uint16"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"memberAddr","type":"address"},{"name":"enterDay","type":"uint256"},{"name":"entryIndex","type":"uint256"}],"name":"xfLobbyEntry","outputs":[{"name":"rawAmount","type":"uint256"},{"name":"referrerAddr","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"stakerAddr","type":"address"}],"name":"stakeCount","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"stakeIndex","type":"uint256"},{"name":"stakeIdParam","type":"uint40"}],"name":"stakeEnd","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"allocatedSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"amount","type":"uint256"}],"name":"burn","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"},{"name":"","type":"address"}],"name":"xfLobbyMembers","outputs":[{"name":"headIndex","type":"uint40"},{"name":"tailIndex","type":"uint40"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"memberAddr","type":"address"}],"name":"xfLobbyPendingDays","outputs":[{"name":"words","type":"uint256[2]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newStakedSuns","type":"uint256"},{"name":"newStakedDays","type":"uint256"}],"name":"stakeStart","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"currentDay","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"stakerAddr","type":"address"},{"name":"stakeIndex","type":"uint256"},{"name":"stakeIdParam","type":"uint40"}],"name":"stakeGoodAccounting","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"beginDay","type":"uint256"},{"name":"endDay","type":"uint256"}],"name":"dailyDataRange","outputs":[{"name":"_dayStakeSharesTotal","type":"uint256[]"},{"name":"_dayPayoutTotal","type":"uint256[]"},{"name":"_dayDividends","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"account","type":"address"}],"name":"balanceOf","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"xfLobby","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"beforeDay","type":"uint256"}],"name":"dailyDataUpdate","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"","type":"uint256"}],"name":"dailyData","outputs":[{"name":"dayPayoutTotal","type":"uint72"},{"name":"dayDividends","type":"uint256"},{"name":"dayStakeSharesTotal","type":"uint72"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"recipient","type":"address"},{"name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"globals","outputs":[{"name":"lockedSunsTotal","type":"uint72"},{"name":"nextStakeSharesTotal","type":"uint72"},{"name":"shareRate","type":"uint40"},{"name":"stakePenaltyTotal","type":"uint72"},{"name":"dailyDataCount","type":"uint16"},{"name":"stakeSharesTotal","type":"uint72"},{"name":"latestStakeId","type":"uint40"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"enterDay","type":"uint256"},{"name":"count","type":"uint256"}],"name":"xfLobbyExit","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"referrerAddr","type":"address"}],"name":"xfLobbyEnter","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":true,"inputs":[{"name":"owner","type":"address"},{"name":"spender","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"xfFlush","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"globalInfo","outputs":[{"name":"","type":"uint256[10]"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"beginDay","type":"uint256"},{"name":"endDay","type":"uint256"}],"name":"xfLobbyRange","outputs":[{"name":"list","type":"uint256[]"}],"payable":false,"stateMutability":"view","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":false,"name":"timestamp","type":"uint256"},{"indexed":false,"name":"enterDay","type":"uint256"},{"indexed":true,"name":"entryIndex","type":"uint256"},{"indexed":true,"name":"rawAmount","type":"uint256"}],"name":"XfLobbyEnter","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"timestamp","type":"uint256"},{"indexed":false,"name":"enterDay","type":"uint256"},{"indexed":true,"name":"entryIndex","type":"uint256"},{"indexed":true,"name":"xfAmount","type":"uint256"},{"indexed":true,"name":"referrerAddr","type":"address"}],"name":"XfLobbyExit","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"updaterAddr","type":"address"},{"indexed":false,"name":"timestamp","type":"uint256"},{"indexed":false,"name":"beginDay","type":"uint256"},{"indexed":false,"name":"endDay","type":"uint256"}],"name":"DailyDataUpdate","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"stakeId","type":"uint40"},{"indexed":true,"name":"stakerAddr","type":"address"},{"indexed":false,"name":"stakedSuns","type":"uint256"},{"indexed":false,"name":"stakeShares","type":"uint256"},{"indexed":false,"name":"stakedDays","type":"uint256"}],"name":"StakeStart","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"stakeId","type":"uint40"},{"indexed":true,"name":"stakerAddr","type":"address"},{"indexed":true,"name":"senderAddr","type":"address"},{"indexed":false,"name":"stakedSuns","type":"uint256"},{"indexed":false,"name":"stakeShares","type":"uint256"},{"indexed":false,"name":"payout","type":"uint256"},{"indexed":false,"name":"penalty","type":"uint256"}],"name":"StakeGoodAccounting","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"stakeId","type":"uint40"},{"indexed":false,"name":"prevUnlocked","type":"uint40"},{"indexed":true,"name":"stakerAddr","type":"address"},{"indexed":false,"name":"lockedDay","type":"uint256"},{"indexed":false,"name":"servedDays","type":"uint256"},{"indexed":false,"name":"stakedSuns","type":"uint256"},{"indexed":false,"name":"stakeShares","type":"uint256"},{"indexed":false,"name":"dividends","type":"uint256"},{"indexed":false,"name":"payout","type":"uint256"},{"indexed":false,"name":"penalty","type":"uint256"},{"indexed":false,"name":"stakeReturn","type":"uint256"}],"name":"StakeEnd","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"stakeId","type":"uint40"},{"indexed":false,"name":"timestamp","type":"uint256"},{"indexed":false,"name":"newShareRate","type":"uint256"}],"name":"ShareRateChange","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Approval","type":"event"}]
-var ethContract, trxContract
-var ethContracts = []
-var trxContracts = []
+<!DOCTYPE html>
+<html lang="en">
 
-ethContracts[0] = {name: "e2x", addr: "0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6"}
-ethContracts[1] = {name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"}
-ethContracts[2] = {name: "elck", addr: "0xdd3a8f6793afbfa8d7c8e2b19106175dccabec41"}
-ethContracts[3] = {name: "csne", addr: "0x7245B0fe11c4AE2978c8a8D29f3b74477CE6F789"}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DAPP Auctions: Live totals for DAPP auctions!</title>
+    <link href="img/fav.png" rel="shortcut icon">
+    <meta name="description" content="One stop DAPP auction stats!">
+    <link rel="stylesheet" href="css/app.css">
+</head>
 
-trxContracts[0] = {name: "t2x", addr: "THsSSczBw9RRMJWYL5j2MtcgaPasL2xPGP"}
-trxContracts[1] = {name: "cse", addr: "TVs1rRWrBkgQ5zxksYJuCeGthFohjKUGyy"}
-trxContracts[2] = {name: "lck", addr: "TXZp52GAUSRxiuKN2wJkwzgyqaosurKJ6r"}
-trxContracts[3] = {name: "dsp", addr: "TUCjCMAwbpmeACMBkedFh9N5u3fUmpCrQ7"}
-trxContracts[4] = {name: "gcp", addr: "TVXRW7L5dT9NAAiEUoasVYCYhyPyWbVyYB"}
-trxContracts[5] = {name: "msx", addr: "TFSCWYsykYeycgwfWNbbDLjQsH1JLtNEdC"}
-trxContracts[6] = {name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ"}
-trxContracts[7] = {name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"}
-trxContracts[8] = {name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"}
+<body>
+    <div id="content">
+        <div id="tron">
+            <span class="toolbar-icon" onclick="setUp()">
+                <svg enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                    <path d="m463.7 162.66-21.211-148.49c-1.744-12.174-16.707-17.233-25.459-8.481l-30.894 30.894c-39.727-23.965-84.829-36.577-131.21-36.577-139.47 0-251.44 109.16-254.93 248.51-0.19 7.617 5.347 14.15 12.876 15.234l59.941 8.569c8.936 1.304 17.249-5.712 17.125-15.058-1.243-91.97 73.039-167.26 164.98-167.26 22.265 0 44.267 4.526 64.6 13.183l-29.78 29.78c-8.697 8.697-3.761 23.706 8.481 25.459l148.49 21.211c9.784 1.475 18.381-7.034 16.978-16.978z" />
+                    <path d="m499.12 249.41-59.897-8.555c-7.738-0.98-17.124 5.651-17.124 16.143 0 90.981-74.019 165-165 165-22.148 0-44.048-4.482-64.306-13.052l28.828-28.828c8.697-8.697 3.761-23.706-8.481-25.459l-148.49-21.226c-9.753-1.393-18.39 6.971-16.978 16.978l21.21 148.49c1.746 12.187 16.696 17.212 25.459 8.481l31.641-31.626c39.536 23.745 84.609 36.24 131.12 36.24 138.79 0 250.75-108.62 254.9-247.28 0.22-7.632-5.317-14.224-12.876-15.308z" />
+                </svg>
+            </span>
 
-window.addEventListener('load', function () {
+            <p class="subtitle">DAPP Auction Live Stats
+			<br>One site to collect them all.</p>
+            <p id="timer"><span id="countdown" class="timer-content"></span></p>
+
+<!------------------START ERC---------------------->
+            <table id="eth">
+                
+				<tr class="top-header">
+                    <td class="header"></td>
+                    <td class="header">Platform</td>
+                    <td class="header">Day</td>
+                    <td class="header">ETH</td>
+                    <td class="header">Link</td>
+                </tr>
+                <tr>
+                    <td class="#">#1</td>
+                    <td class="header">
+                        <a href="https://e2xtoken.io/?ref=0x5171856455C92b3320B95cF750A619a505CF98Fe" target="_blank" data-platform="E2X">E2X</a>
+                    </td>
+                    <td class="header e2x"><img src="img/loading.gif"></img></td>
+                    <td class="header value e2x">---</td>
+                    <td class="icon-cell">
+                        <a href="https://e2xtoken.io/?ref=0x5171856455C92b3320B95cF750A619a505CF98Fe" class="ref-link" target="_blank" data-platform="E2X">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#2</td>
+                    <td class="header">
+                        <a href="https://nuitoken.github.io/gold/panel/auction.html?ref=0x5171856455C92b3320B95cF750A619a505CF98Fe" target="_blank" data-platform="NUG">NUG</a>
+                    </td>
+                    <td class="header nug"><img src="img/loading.gif"></img></td>
+                    <td class="header value nug">---</td>
+                    <td class="icon-cell">
+                        <a href="https://nuitoken.github.io/gold/panel/auction.html?ref=0x5171856455C92b3320B95cF750A619a505CF98Fe" class="ref-link" target="_blank" data-platform="NUG">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#3</td>
+                    <td class="header">
+                        <a href="https://elck.luckve.com/?ref=0x5171856455C92b3320B95cF750A619a505CF98Fe" target="_blank" data-platform="csne">ELCK</a>
+                    </td>
+                    <td class="header elck"><img src="img/loading.gif"></img></td>
+                    <td class="header value elck">---</td>
+                    <td class="icon-cell">
+                        <a href="https://elck.luckve.com/?ref=0x5171856455C92b3320B95cF750A619a505CF98Fe" class="ref-link" target="_blank" data-platform="ELCK">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#4</td>
+                    <td class="header">
+                        <a href="https://eth.csnstaking.io/auction.html?ref=0x5171856455C92b3320B95cF750A619a505CF98Fe" target="_blank" data-platform="CSNE">CSNE</a>
+                    </td>
+                    <td class="header csne"><img src="img/loading.gif"></img></td>
+                    <td class="header value csne">---</td>
+                    <td class="icon-cell">
+                        <a href="https://eth.csnstaking.io/auction.html?ref=0x5171856455C92b3320B95cF750A619a505CF98Fe" class="ref-link" target="_blank" data-platform="CSNE">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+<!--------------------END ERC---------------------->
+
+<!------------------START TRC---------------------->
+            <table id="trx">
+
+				<tr class="top-header">
+                    <td class="header"></td>
+                    <td class="header">Platform</td>
+                    <td class="header">Day</td>
+                    <td class="header">TRX</td>
+                    <td class="header">Link</td>
+                </tr>
+				<tr>
+                    <td class="#">#1</td>
+                    <td class="header">
+                        <a href="https://t2xtoken.io/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="T2X">
+                            T2X
+                        </a>
+                    </td>
+                    <td class="header t2x"><img src="img/loading.gif"></img></td>
+                    <td class="header value t2x">---</td>
+                    <td class="icon-cell">
+                        <a href="https://t2xtoken.io/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" class="ref-link" target="_blank" data-platform="T2X">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                </tr>
+                <tr>
+                    <td class="#">#2</td>
+                    <td class="header">
+                        <a href="https://csetron.github.io/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="CSE">
+                            CSE
+                        </a>
+                    </td>
+                    <td class="header cse"><img src="img/loading.gif"></img></td>
+                    <td class="header value cse">---</td>
+                    <td class="icon-cell">
+                        <a href="https://csetron.github.io/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" class="ref-link" target="_blank" data-platform="CSE">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#3</td>
+                    <td class="header">
+                        <a href="https://gcpstaking.io/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="GCP">
+                            GCP
+                            <span class="new-tag">NEW</span>
+                        </a>
+                    </td>
+                    <td class="header gcp"><img src="img/loading.gif"></img></td>
+                    <td class="header value gcp">---</td>
+                    <td class="icon-cell">
+                        <a href="https://gcpstaking.io/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" class="ref-link" target="_blank" data-platform="GCP">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#4</td>
+                    <td class="header">
+                        <a href="https://www.dsptoken.io/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="DSP">
+                            DSP
+                        </a>
+                    </td>
+                    <td class="header dsp"><img src="img/loading.gif"></img></td>
+                    <td class="header value dsp">---</td>
+                    <td class="icon-cell">
+                        <a href="https://www.dsptoken.io/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" class="ref-link" target="_blank" data-platform="DSP">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#5</td>
+                    <td class="header">
+                        <a href="https://minershares.net/?page=auction&amp;ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="MSX">
+                            MSX
+                        </a>
+                    </td>
+                    <td class="header msx"><img src="img/loading.gif"></img></td>
+                    <td class="header value msx">---</td>
+                    <td class="icon-cell">
+                        <a href="https://minershares.net/?page=auction&amp;ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" class="ref-link" target="_blank" data-platform="MSX">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#6</td>
+                    <td class="header">
+                        <a href="https://csnstaking.io/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="CSN">
+                            CSN
+                        </a>
+                    </td>
+                    <td class="header csn"><img src="img/loading.gif"></img></td>
+                    <td class="header value csn">---</td>
+                    <td class="icon-cell">
+                        <a href="https://csnstaking.io/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" class="ref-link" target="_blank" data-platform="CSN">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#7</td>
+                    <td class="header">
+                        <a href="https://defi.moonstaking.net/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="MOONS">
+                            MOONS
+                        </a>
+                    </td>
+                    <td class="header moons"><img src="img/loading.gif"></img></td>
+                    <td class="header value moons">---</td>
+                    <td class="icon-cell">
+                        <a href="https://defi.moonstaking.net/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" class="ref-link" target="_blank" data-platform="MOONS">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#8</td>
+                    <td class="header">
+                        <a href="https://stake.luckve.com/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="LCK">
+                            LCK
+                        </a>
+                    </td>
+                    <td class="header lck"><img src="img/loading.gif"></img></td>
+                    <td class="header value lck">---</td>
+                    <td class="icon-cell">
+                        <a href="https://stake.luckve.com/?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" class="ref-link" target="_blank" data-platform="LCK">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#9</td>
+                    <td class="header">
+                        <a href="https://nuitoken.github.io/panel/auction.html?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="NUI">
+                            NUI
+                        </a>
+                    </td>
+                    <td class="header nui"><img src="img/loading.gif"></img></td>
+                    <td class="header value nui">---</td>
+                    <td class="icon-cell">
+                        <a href="https://nuitoken.github.io/panel/auction.html?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" class="ref-link" target="_blank" data-platform="NUI">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="#">#10</td>
+                    <td class="header">
+                        <a href="https://BUBtoken.github.io/panel/auction.html?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="NUI">
+                            BUB
+                        </a>
+                    </td>
+                    <td class="header bub"><img src="img/loading.gif"></img></td>
+                    <td class="header value bub">---</td>
+                    <td class="icon-cell">
+                        <a href="https://BUBtoken.github.io/panel/auction.html?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" class="ref-link" target="_blank" data-platform="BUB">
+                            <div class="tooltip">Go to site</div>
+                            <svg enable-background="new 0 0 512.092 512.092" version="1.1" viewBox="0 0 512.09 512.09" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                                <path d="m312.45 199.6c-6.066-6.102-12.792-11.511-20.053-16.128-19.232-12.315-41.59-18.859-64.427-18.859-31.697-0.059-62.106 12.535-84.48 34.987l-108.54 108.63c-22.336 22.379-34.89 52.7-34.91 84.318-0.042 65.98 53.41 119.5 119.39 119.54 31.648 0.11 62.029-12.424 84.395-34.816l89.6-89.6c1.628-1.614 2.537-3.816 2.524-6.108-0.027-4.713-3.87-8.511-8.583-8.484h-3.413c-18.72 0.066-37.273-3.529-54.613-10.581-3.195-1.315-6.867-0.573-9.301 1.877l-64.427 64.512c-20.006 20.006-52.442 20.006-72.448 0s-20.006-52.442 0-72.448l108.97-108.88c19.99-19.965 52.373-19.965 72.363 0 13.472 12.679 34.486 12.679 47.957 0 5.796-5.801 9.31-13.495 9.899-21.675 0.623-9.775-2.982-19.348-9.9-26.282z" />
+                                <path d="m477.06 34.993c-46.657-46.657-122.3-46.657-168.96 0l-89.515 89.429c-2.458 2.47-3.167 6.185-1.792 9.387 1.359 3.211 4.535 5.272 8.021 5.205h3.157c18.698-0.034 37.221 3.589 54.528 10.667 3.195 1.315 6.867 0.573 9.301-1.877l64.256-64.171c20.006-20.006 52.442-20.006 72.448 0s20.006 52.442 0 72.448l-80.043 79.957-0.683 0.768-27.989 27.819c-19.99 19.965-52.373 19.965-72.363 0-13.472-12.679-34.486-12.679-47.957 0-5.833 5.845-9.35 13.606-9.899 21.845-0.624 9.775 2.981 19.348 9.899 26.283 9.877 9.919 21.433 18.008 34.133 23.893 1.792 0.853 3.584 1.536 5.376 2.304s3.669 1.365 5.461 2.048 3.669 1.28 5.461 1.792l5.035 1.365c3.413 0.853 6.827 1.536 10.325 2.133 4.214 0.626 8.458 1.025 12.715 1.195h6.485l5.12-0.597c1.877-0.085 3.84-0.512 6.059-0.512h2.901l5.888-0.853 2.731-0.512 4.949-1.024h0.939c20.961-5.265 40.101-16.118 55.381-31.403l108.63-108.63c46.66-46.657 46.66-122.3 3e-3 -168.96z" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+<!------------------END TRC------------------------>
+
+        </div>
+    </div>
+
+    <div id="footer">
+        <p><strong>Donate:</strong></p>
+        <div id="table-wrapper">
+            <table id="donate">
+                <tr>
+                    <th>TRX</th>
+                    <td>TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg</td>
+                </tr>
+                <tr>
+                    <th>ETH</th>
+                    <td>0x5171856455C92b3320B95cF750A619a505CF98Fe</td>
+                </tr>
+            </table>
+        </div>
+        <a id="telegram" href="https://t.me/DAPPAuctions" target="_blank" data-platform="TELEGRAM">Telegram!</a>
+    </div>
 	
-    web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"))
-	
-	const HttpProvider = TronWeb.providers.HttpProvider
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/TronWeb.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/contracts.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-73262508-12"></script>
 
-	const tronWeb = new TronWeb({fullHost: 'https://api.trongrid.io'})	
-	setUp()
-})
+    <script>
+function zeroPrefix(val) {
+    if ((val.toString()).length < 2) {
+        val = '0' + val;
+    }
 
-function setUp(){
-	setUpETH()
-	setUpTRX()
+    return val;
 }
 
-function setUpETH() {
+let timers = document.getElementsByClassName('timer-content');
 
-	for(var i = 0; i < ethContracts.length; i++){
+setInterval(function time() {
+    let d = new Date(),
+        hours = 23 - d.getUTCHours(),
+        min = 59 - d.getUTCMinutes(),
+        sec = 59 - d.getUTCSeconds();
 
-		ethContract = new web3.eth.Contract(ethAbi, ethContracts[i].addr)
-		if (!ethContract) {
-			console.log("Error loading contract")
-			return void 0
-		}
-		
-		displayInfo(ethContract, i, "eth")
-		
-	}
-}
+    for (let i = 0; i < timers.length; i++) {
+        timers[i].innerHTML = 'Auctions End In: ' + zeroPrefix(hours) + 'h : ' + zeroPrefix(min) + 'm : ' + zeroPrefix(sec) + 's';
+    }
+}, 100);
+    </script>
 
-function setUpTRX() {
-
-	for(var i = 0; i < trxContracts.length; i++){
-		trx(i)
-		function trx(index){
-			try{
-				tronWeb.contract().at(trxContracts[i].addr, function (error, result) {
-					if (!error) {
-						trxContract = result;
-						displayInfo(trxContract, index, "trx")
-					} else{
-						console.error(error);
-						trx(i)
-					}
-				})
-			}catch(e){
-				console.log(e)
-				trx(i)
-			}
-		}
-	}
-}
-
-function displayInfo(contract, index, type){
-	
-    contract.methods.currentDay().call({
-        shouldPollResponse: true
-    }).then(res => {
-		if(type == "eth")
-			$(`.${ethContracts[index].name}`)[0].innerHTML = parseInt(res)
-		if(type == "trx")
-			$(`.${trxContracts[index].name}`)[0].innerHTML = parseInt(res)
-	
-		contract.methods.xfLobby(res).call({
-			shouldPollResponse: true,
-		}).then(res => {
-			if(type == "eth")
-				$(`.${ethContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e18)
-			if(type == "trx")
-				$(`.${trxContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e6)
-		})
-	
-	})
-}
-
-function sortTable(tableId) {
-	var table, rows, switching, i, x, y, shouldSwitch
-	table = document.getElementById(tableId)
-	switching = true
-
-	while (switching) {
-		switching = false
-		rows = table.rows
-
-		for (i = 1; i < (rows.length - 1); i++) {
-			shouldSwitch = false;
-
-			x = rows[i].getElementsByClassName("value")
-			y = rows[i + 1].getElementsByClassName("value")
-			x2 = rows[i].getElementsByClassName("#")
-			y2 = rows[i + 1].getElementsByClassName("#")
-			
-			if (parseInt(x[0].innerHTML) < parseInt(y[0].innerHTML)) {
-				shouldSwitch = true
-				break
-			}
-		}
-		if (shouldSwitch) {
-			rows[i].parentNode.insertBefore(rows[i + 1], rows[i])
-			
-			x2[0].innerHTML = "#"+ (i + 1)
-			y2[0].innerHTML = "#"+ i
-			
-			switching = true
-		}
-	}
-}
-
-function checkSort(){
-	var eth = document.getElementById("eth")
-	var trx = document.getElementById("trx")
-	var ethRows = eth.rows
-	var trxRows = trx.rows
-
-	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" ){
-		sortTable("trx")
-	}
-	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" ){
-		sortTable("eth")
-	}
-}
-
-var cs = setInterval(() => {
-	checkSort()
-}, 100)
+</body>
+</html>
