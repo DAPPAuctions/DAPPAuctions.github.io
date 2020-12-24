@@ -2,6 +2,8 @@ const ethAbi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":""
 var ethContract, trxContract
 var ethContracts = []
 var trxContracts = []
+var usdtContracts = []
+
 
 ethContracts.push({name: "e2x", addr: "0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6"})
 ethContracts.push({name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02"})
@@ -18,6 +20,11 @@ trxContracts.push({name: "msx", addr: "TFSCWYsykYeycgwfWNbbDLjQsH1JLtNEdC"})
 trxContracts.push({name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ"})
 trxContracts.push({name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1"})
 trxContracts.push({name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7"})
+trxContracts.push({name: "lsp", addr: "TWnKm5mpxqFNipZC6u6UrNGQjgFeA39Y22"})
+
+usdtContracts.push({name: "u2x", addr: "TYW7i9H58VEi2kuTDAzGGPcnaM4AkV6Xzd"})
+
+
 
 
 
@@ -31,6 +38,8 @@ window.addEventListener('load', function () {
 async function setUp(){
 	await setUpETH()
 	await setUpTRX()
+	await setUpUSDT()
+
 	
 	setInterval(() => {
 		checkSort()
@@ -58,7 +67,6 @@ async function setUpTRX() {
 		await trx(i)
 	}
 }
-
 async function trx(index){
 	const HttpProvider = TronWeb.providers.HttpProvider;
 	const fullNode = new HttpProvider('https://api.trongrid.io');
@@ -83,6 +91,36 @@ async function trx(index){
 	}	
 }
 
+async function setUpUSDT() {
+
+	for(var i = 0; i < usdtContracts.length; i++){
+		await usdt(i)
+	}
+}
+async function usdt(index){
+	const HttpProvider = TronWeb.providers.HttpProvider;
+	const fullNode = new HttpProvider('https://api.trongrid.io');
+	const solidityNode = new HttpProvider('https://api.trongrid.io');
+	const eventServer = new HttpProvider('https://api.trongrid.io');
+
+	const tronWeb = new TronWeb(fullNode, solidityNode, eventServer);
+	tronWeb.setAddress(usdtContracts[index].addr);
+	try{
+		await tronWeb.contract().at(usdtContracts[index].addr, function (error, result) {
+			if (!error) {
+				trxContract = result;
+				displayInfo(trxContract, index, "usdt")
+			} else{
+				console.error(error);
+				usdt(index)
+			}
+		})
+	}catch(e){
+		console.log(e)
+		usdt(index)
+	}	
+}
+
 function displayInfo(contract, index, type){
 	
     contract.methods.currentDay().call({
@@ -92,6 +130,8 @@ function displayInfo(contract, index, type){
 			$(`.${ethContracts[index].name}`)[0].innerHTML = parseInt(res)
 		if(type == "trx")
 			$(`.${trxContracts[index].name}`)[0].innerHTML = parseInt(res)
+		if(type == "usdt")
+			$(`.${usdtContracts[index].name}`)[0].innerHTML = parseInt(res)
 	
 		contract.methods.xfLobby(res).call({
 			shouldPollResponse: true,
@@ -100,6 +140,8 @@ function displayInfo(contract, index, type){
 				$(`.${ethContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e18).toFixed(3)
 			if(type == "trx")
 				$(`.${trxContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e6).toFixed(0)
+			if(type == "usdt")
+				$(`.${usdtContracts[index].name}`)[1].innerHTML = (parseFloat(res) / 1e6).toFixed(2)
 		})
 	
 	})
@@ -138,17 +180,25 @@ function sortTable(tableId) {
 }
 
 function checkSort(){
-	var eth = document.getElementById("eth")
+	var usdt = document.getElementById("usdt")
+	var usdtRows = usdt.rows
+	if( usdtRows[usdtRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && usdtRows.length > 1 )
+		setUpUSDT()
+	if( usdtRows[usdtRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && usdtRows.length > 1  )
+		sortTable("usdt")
+
 	var trx = document.getElementById("trx")
-	var ethRows = eth.rows
 	var trxRows = trx.rows
-	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" )
+	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && trxRows.length > 1 )
 		setUpTRX()
-	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" )
+	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && trxRows.length > 1 )
 		sortTable("trx")
-	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" )
+	
+	var eth = document.getElementById("eth")
+	var ethRows = eth.rows	
+	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && ethRows.length > 1 )
 		setUpETH()
-	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" )
+	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && ethRows.length > 1 )
 		sortTable("eth")
 	
 }
