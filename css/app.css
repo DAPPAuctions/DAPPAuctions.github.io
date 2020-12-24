@@ -15,7 +15,7 @@ body {
     line-height: 1;
     color: #fff;
     background: linear-gradient(45deg, #424743, #2f3630) fixed;
-    margin-top: 25px;
+    margin-top: 10px;
     height: calc(100% - 120px)
 }
 
@@ -59,7 +59,7 @@ h1 {
 #content {
     position: relative;
     display: flex;
-    margin: auto auto 50px
+    margin: auto auto 10px
 }
 
 #all-content{
@@ -125,7 +125,7 @@ a:hover svg {
 
 .subtitle {
     text-align: center;
-    margin-bottom: 25px
+    margin-bottom: 5px
 }
 
 .subtitle>span {
@@ -170,7 +170,7 @@ a:hover svg {
 }
 
 .footer-banner {
-    padding: 3px 3px 12px;
+    padding: 3px 3px 2px;
     background: hsla(0, 0%, 100%, .09);
     border-radius: 3px;
     margin: 5px 0
@@ -283,29 +283,30 @@ td.position {
 .new-tag {
     background: #0079ad;
     position: absolute;
-    top: calc(50% - 12px);
-    right: 7px;
-    font-size: 16px;
-    padding: 2px 5px 5px 2px;
+    top: calc(50% - 7px);
+    right: 10px;
+    font-size: 12px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+	padding: 2px 2px 2px 2px;
     color: #ffffff;
-    height: 20px
+    height: 14px;
+	width: 26px;
 }
 
 #telegram,
 .new-tag {
-    font-weight: 700;
     box-sizing: border-box
 }
 
 #telegram {
     background: hsla(0, 0%, 100%, .07);
-    width: 100%;
+    width: 25%;
     display: flex;
-    align-items: center;
+    align-items: top;
+	margin: 0px auto;
     justify-content: center;
     text-decoration: none;
     color: #fff;
@@ -313,7 +314,8 @@ td.position {
     opacity: 1;
     z-index: 100;
     padding: 10px 5px 12px;
-    margin-top: 30px
+    margin-top: 10px;
+	vertical-align: top;
 }
 
 .small-label {
@@ -493,7 +495,7 @@ td.position {
     }
 
     #footer {
-        padding: 30px 10px
+        padding: 10px 10px
     }
 
     #content {
