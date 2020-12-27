@@ -37,17 +37,23 @@ table td {
 	border-bottom: 2px solid #000000;
 }
 
+.staked, .divs{
+	text-align: center;
+}
+
 .header-position {
     background: hsla(0, 0%, 100%, .09);
     width: 60px;
     padding: 0;
     position: relative;
-	border-bottom: 2px solid #000000;
+	border-bottom: 3px solid #000000;
 }
 
 .position {
-    width: 60px;
+    width: 70px;
     padding: 0;
+	margin: 1.5px auto;
+	text-align: right;
     position: relative;
 }
 
@@ -58,8 +64,18 @@ table td {
 	border-bottom: 2px solid #000000;
 }
 
+.erc-address, .trc-address{
+	text-align: center;
+	font-size: 16px;
+}
+
+.site{
+	color: #43d6f0 !important;
+}
+
 img.telegram-img {
-  width: 35px;
+	width: 22px;
+	justify-items: right;
 }
 
 .top-header {
