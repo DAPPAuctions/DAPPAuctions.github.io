@@ -80,7 +80,9 @@ window.addEventListener('load', function () {
 	setUp()
 })
 
+var sorted = false
 async function setUp(){
+	
 	await setUpETH()
 	await setUpTRX()
 	
@@ -93,10 +95,15 @@ async function setUp(){
 		for(var i = 0; i < trcContracts.length; i++){
 			await getTRCStakes(i)
 		}
-	
+		
 	let cs = setInterval(() => {
-		checkSort()
+		if(!sorted)
+			checkSort()
+		else{
+			clearInterval(cs)
+		}
 	}, 200)
+
 }
 
 async function setUpETH() {
@@ -255,35 +262,37 @@ function sortTable(tableId) {
 
 function checkSort(){
 
+	var eth = document.getElementById("eth")
+	var ethRows = eth.rows	
+	
+	var trx = document.getElementById("trx")
+	var trxRows = trx.rows
+	
 	var usdt = document.getElementById("usdt")
 	var usdtRows = usdt.rows
-	if( usdtRows[usdtRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && usdtRows.length > 1 ){
-		for(let i = trcContracts.length-1; trcContracts[i].type == "usdt"; i--){
-			trc(i)
-		}
+	
+	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && ethRows.length > 1 ){
+		sortTable("eth")
+	}
+	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && trxRows.length > 1 ){
+		sortTable("trx")
 	}
 	if( usdtRows[usdtRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && usdtRows.length > 1  ){
 		sortTable("usdt")
 	}
-
-	var trx = document.getElementById("trx")
-	var trxRows = trx.rows
-	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && trxRows.length > 1 ){
-		for(let i = 0; trcContracts[i].type != "usdt"; i++)
-			trc(i)
-	}
-	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && trxRows.length > 1 ){
-		sortTable("trx")
-	}	
-	var eth = document.getElementById("eth")
-	var ethRows = eth.rows	
+	
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && ethRows.length > 1 ){
 		setUpETH()
-	}
-	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && ethRows.length > 1 ){
-		sortTable("eth")
+	}else if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && trxRows.length > 1 ){
+		setUpTRX()
+	}else if( usdtRows[usdtRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && usdtRows.length > 1 ){
+		for(let i = trcContracts.length-1; trcContracts[i].type == "usdt"; i--){
+			trc(i)
+		}
 	}else{
-		setUp()
+		setTimeout(() => {
+			sorted = true
+		}, 6000)
 	}
 	
 }
@@ -385,7 +394,7 @@ async function getERCStakes(index) {
 					}
 				})
 			}
-		}, 1000)
+		}, 3000)
     })
 }
 
@@ -417,7 +426,7 @@ function calcERCDividends(index, lockedDay, stakedDays, stakeShares) {
 			ercContracts[index].daily.forEach(item => {
 
 				if (item.day == lockedDay + i) {
-					let divs = item.dayDividends / 1e18
+					let divs = item.dayDividends
 					let userShares = item.dayStakeSharesTotal
 					let shares = stakeShares
 
@@ -427,14 +436,11 @@ function calcERCDividends(index, lockedDay, stakedDays, stakeShares) {
 						userShares = 1
 					}
 					ercContracts[index].divs += (divs * ercContracts[index].sharePercent * shares) / userShares
-					$(`.${ercContracts[index].name}`)[3].innerHTML = ercContracts[index].divs.toFixed(5)
-
 				}
 			})
 		}
-		
-	}, 1000)
-	
+	$(`.${ercContracts[index].name}`)[3].innerHTML = (ercContracts[index].divs  / 1e18).toFixed(6)
+	}, 3000)	
 }
 /*
 *END ERC STAKES
@@ -452,6 +458,9 @@ async function getTRCDaysData(index) {
 	
 	trcDayIndex = 1
 	trcIndex = 0
+	
+	trcContracts[index].daily = []
+
 	
 	while(trcDayIndex < trcContracts[index].currentDay){
 		await loadTRCDaysData(index, trcDayIndex, trcIndex)
@@ -471,7 +480,7 @@ async function loadTRCDaysData(index, di, ai){
 				return
 			}else{
 				res.day = di
-				TrcDaysData[ai] = res
+				trcContracts[index].daily[ai] = res
 			}
 		})
 	}catch(e){
@@ -482,9 +491,11 @@ async function loadTRCDaysData(index, di, ai){
 
 async function getTRCStakes(index) {
 	
-    trcContracts[index].contract.methods.stakeCount(trcUserAddress).call({
-        shouldPollResponse: true
-    }).then(res => {
+    trcContracts[index].contract.methods.stakeCount(trcUserAddress).call({}, function(error, res){
+		if(error){
+			getTRCStakes(index)
+			return
+		}else{
 			const myStakesCount = res
 			
 			if( myStakesCount == 0 )
@@ -492,32 +503,36 @@ async function getTRCStakes(index) {
 			else
 				getTRCDaysData(index)
 				
-		setTimeout(() => {
+			setTimeout(() => {
 
-			let toBeRendered = []
+				let toBeRendered = []
 
-			let strt = 0
-			ck1()
-			function ck1() {
-				if (strt < myStakesCount) {
-					getDrc()
-					strt++
-				}
-			}
-			function getDrc() {
-				trcContracts[index].contract.methods.stakeLists(trcUserAddress, strt).call({
-					shouldPollResponse: true
-				}).then(res2 => {
-					toBeRendered.push(res2)
-
-					if (toBeRendered.length == myStakesCount) {
-						getTotalTRCDivs(index, toBeRendered)
-					}else {
-						ck1()
+				let strt = 0
+				ck1()
+				function ck1() {
+					if (strt < myStakesCount) {
+						getDrc()
+						strt++
 					}
-				})
-			}
-        }, 1000)
+				}
+				function getDrc() {
+					trcContracts[index].contract.methods.stakeLists(trcUserAddress, strt).call({}, function(error, res2){
+						if(error){
+							getDrc()
+							return
+						}else{
+							toBeRendered.push(res2)
+
+							if (toBeRendered.length == myStakesCount) {
+								getTotalTRCDivs(index, toBeRendered)
+							}else {
+								ck1()
+							}
+						}
+					})
+				}
+			}, 3000)
+		}
     })
 }
 
@@ -546,7 +561,7 @@ function getTotalTRCDivs(index, data) {
 function calcTRCDividends(index, lockedDay, stakedDays, stakeShares) {
 	setTimeout(() => {
 		for (var i = 0; i < stakedDays; i++) {
-			TrcDaysData.forEach(item => {
+			trcContracts[index].daily.forEach(item => {
 
 				if (item.day == lockedDay + i) {
 					let divs = item.dayDividends
@@ -555,15 +570,14 @@ function calcTRCDividends(index, lockedDay, stakedDays, stakeShares) {
 
 					if(Number.isNaN(divs) || Number.isNaN(shares) || Number.isNaN(userShares) || shares == 0 || userShares == 0){
 						divs = 0
-						shares = 1
+						shares = 0
 						userShares = 1
 					}
 					
-					trcContracts[index].divs += ( (divs / 1e6) * trcContracts[index].sharePercent) * shares / userShares
-					$(`.${trcContracts[index].name}`)[3].innerHTML = trcContracts[index].divs.toFixed(2)
-
+					trcContracts[index].divs += ( (divs * trcContracts[index].sharePercent) * (shares / userShares) )
 				}
 			})
 		}
-	}, 1000)
+		$(`.${trcContracts[index].name}`)[3].innerHTML = (trcContracts[index].divs / 1e6).toFixed(2)
+	}, 3000)
 }
