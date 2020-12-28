@@ -3,23 +3,21 @@ const ethAbi = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":""
 var ercContracts = []
 var trcContracts = []
 
-
 ercContracts.push({name: "e2x", addr: "0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6", sharePercent: .9})
 ercContracts.push({name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02", sharePercent: .85})
 ercContracts.push({name: "elck", addr: "0xdd3a8f6793afbfa8d7c8e2b19106175dccabec41", sharePercent: .9})
-ercContracts.push({name: "csne", addr: "0x7245B0fe11c4AE2978c8a8D29f3b74477CE6F789", sharePercent: .95})
+ercContracts.push({name: "csee", addr: "0x89074ceEf58061c123a81b5a25Ce893e96eEC830", sharePercent: .97})
+
 
 trcContracts.push({name: "t2x", addr: "THsSSczBw9RRMJWYL5j2MtcgaPasL2xPGP", sharePercent: .95})
 trcContracts.push({name: "bub", addr: "TDbygTtZNsS1xsSNKcdsz3h45ma8bXwv3F", sharePercent: .97})
 trcContracts.push({name: "cse", addr: "TVs1rRWrBkgQ5zxksYJuCeGthFohjKUGyy", sharePercent: .98})
 trcContracts.push({name: "lck", addr: "TXZp52GAUSRxiuKN2wJkwzgyqaosurKJ6r", sharePercent: .95})
-trcContracts.push({name: "dsp", addr: "TUCjCMAwbpmeACMBkedFh9N5u3fUmpCrQ7", sharePercent: .95})
 trcContracts.push({name: "gcp", addr: "TVXRW7L5dT9NAAiEUoasVYCYhyPyWbVyYB", sharePercent: .95})
 trcContracts.push({name: "msx", addr: "TFSCWYsykYeycgwfWNbbDLjQsH1JLtNEdC", sharePercent: .95})
 trcContracts.push({name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ", sharePercent: 1})
 trcContracts.push({name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1", sharePercent: .97})
 trcContracts.push({name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7", sharePercent: .95})
-trcContracts.push({name: "lsp", addr: "TWnKm5mpxqFNipZC6u6UrNGQjgFeA39Y22", sharePercent: 1})
 
 trcContracts.push({name: "u2x", addr: "TYW7i9H58VEi2kuTDAzGGPcnaM4AkV6Xzd", sharePercent: .95, type: "usdt"})
 
@@ -76,7 +74,7 @@ window.addEventListener('load', function () {
 		})
 		
     }else{
-        web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"))
+        web3 = new Web3(new Web3.providers.HttpProvider("https://eth-mainnet.alchemyapi.io/v2/tL5AUiYyJbJqR3UCVY_isdL6VWePXkJf" || "https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"))
     }
 
 	setUp()
@@ -105,7 +103,8 @@ async function setUpETH() {
 
 	for(var i = 0; i < ercContracts.length; i++){
 
-		ercContracts[i].contract = new web3.eth.Contract(ethAbi, ercContracts[i].addr)
+			ercContracts[i].contract = new web3.eth.Contract(ethAbi, ercContracts[i].addr)
+		
 		if (!ercContracts[i].contract) {
 			console.log("Error loading contract")
 			return void 0
@@ -285,7 +284,6 @@ function checkSort(){
 		sortTable("eth")
 	}else{
 		setUp()
-		clearInterval(cs)
 	}
 	
 }
