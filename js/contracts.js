@@ -90,11 +90,14 @@ async function setUp(){
 		for(var i = 0; i < ercContracts.length; i++){
 			await getERCStakes(i)
 		}
-		
-	if(trcUserAddress)
-		for(var i = 0; i < trcContracts.length; i++){
-			await getTRCStakes(i)
-		}
+	if(!trcUserAddress){
+		await loginTrc()
+	
+		if(trcUserAddress)
+			for(var i = 0; i < trcContracts.length; i++){
+				await getTRCStakes(i)
+			}
+	}
 		
 	let cs = setInterval(() => {
 		if(!sorted)
@@ -165,6 +168,48 @@ async function setUpTRX() {
 	for(var i = 0; i < trcContracts.length; i++){
 		await trc(i)
 	}
+}
+
+async function loginTrc(){
+	const loginPromise = new Promise((resolve, reject) => {
+		if (window.tronWeb && window.tronWeb.ready) {
+			resolve(true)
+		} else {
+			window.addEventListener('load', () => {
+				let tbAcc = setInterval(() => {
+					if (window.tronWeb && window.tronWeb.ready) resolve(true)
+					clearInterval(tbAcc)
+				}, 200)
+
+				setTimeout(() => {
+					clearInterval(tbAcc)
+				}, 10000)
+			})
+		}
+	})
+	.then(() => {
+		console.log("Tronweb installed and logged in")
+		return true
+	})
+	.catch((err) => {
+		console.error('Error while detecting tronweb', err)
+		return false
+	})
+	loginPromise.then((result) => {
+		return new Promise((resolve, reject) => {
+			const userAddress = window.tronWeb.defaultAddress.base58
+			if (!userAddress) return resolve(false)
+
+			trcUserAddress = userAddress
+			$('.trc-address')[0].innerHTML = "Showing total staked and divs earned for: <br>" + trcUserAddress
+
+			window.addEventListener('load', (event) => {})
+
+			setInterval(() => {
+				if (window.tronWeb && trcUserAddress !== window.tronWeb.defaultAddress.base58) location.reload()
+			}, 700)
+		})
+	})
 }
 
 async function trc(index){
