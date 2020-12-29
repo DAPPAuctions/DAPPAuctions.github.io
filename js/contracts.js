@@ -76,7 +76,7 @@ window.addEventListener('load', function () {
     }else{
         web3 = new Web3(new Web3.providers.HttpProvider("https://eth-mainnet.alchemyapi.io/v2/tL5AUiYyJbJqR3UCVY_isdL6VWePXkJf" || "https://mainnet.infura.io/v3/46fa67a3222a4d1fb00e93bd7b6c7bbb"))
     }
-
+	loginTrc()
 	setUp()
 })
 
@@ -90,14 +90,14 @@ async function setUp(){
 		for(var i = 0; i < ercContracts.length; i++){
 			await getERCStakes(i)
 		}
-	if(!trcUserAddress){
+	if(!trcUserAddress)
 		await loginTrc()
 	
-		if(trcUserAddress)
-			for(var i = 0; i < trcContracts.length; i++){
-				await getTRCStakes(i)
-			}
-	}
+	if(trcUserAddress)
+		for(var i = 0; i < trcContracts.length; i++){
+			await getTRCStakes(i)
+		}
+
 		
 	let cs = setInterval(() => {
 		if(!sorted)
