@@ -287,7 +287,7 @@ function sortTable(tableId) {
 			y = rows[i + 1].getElementsByClassName("value")
 			x2 = rows[i].getElementsByClassName("#")
 			y2 = rows[i + 1].getElementsByClassName("#")
-			if (parseInt(x[0].innerHTML.replace(/,/g, ''), 10) < parseInt(y[0].innerHTML.replace(/,/g, ''), 10)) {
+			if (x[0].innerHTML.replace(/,/g, '') < y[0].innerHTML.replace(/,/g, '') {
 				shouldSwitch = true
 				break
 			}
