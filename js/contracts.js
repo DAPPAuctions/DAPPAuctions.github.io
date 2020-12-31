@@ -5,7 +5,6 @@ var trcContracts = []
 
 ercContracts.push({name: "e2x", addr: "0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6", sharePercent: .9})
 ercContracts.push({name: "nug", addr: "0xA15A5fae698E02EfECcd38b33107DE7253A44E02", sharePercent: .85})
-ercContracts.push({name: "elck", addr: "0xdd3a8f6793afbfa8d7c8e2b19106175dccabec41", sharePercent: .9})
 ercContracts.push({name: "csee", addr: "0x89074ceEf58061c123a81b5a25Ce893e96eEC830", sharePercent: .97})
 
 
@@ -13,7 +12,6 @@ trcContracts.push({name: "t2x", addr: "THsSSczBw9RRMJWYL5j2MtcgaPasL2xPGP", shar
 trcContracts.push({name: "bub", addr: "TDbygTtZNsS1xsSNKcdsz3h45ma8bXwv3F", sharePercent: .97})
 trcContracts.push({name: "cse", addr: "TVs1rRWrBkgQ5zxksYJuCeGthFohjKUGyy", sharePercent: .98})
 trcContracts.push({name: "lck", addr: "TXZp52GAUSRxiuKN2wJkwzgyqaosurKJ6r", sharePercent: .95})
-trcContracts.push({name: "gcp", addr: "TVXRW7L5dT9NAAiEUoasVYCYhyPyWbVyYB", sharePercent: .95})
 trcContracts.push({name: "msx", addr: "TFSCWYsykYeycgwfWNbbDLjQsH1JLtNEdC", sharePercent: .95})
 trcContracts.push({name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ", sharePercent: 1})
 trcContracts.push({name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1", sharePercent: .97})
@@ -317,13 +315,19 @@ function checkSort(){
 	var usdtRows = usdt.rows
 	
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && ethRows.length > 1 ){
-		sortTable("eth")
+		setTimeout(() => {
+			sortTable("eth")
+		}, 200)
 	}
 	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && trxRows.length > 1 ){
-		sortTable("trx")
+		setTimeout(() => {
+			sortTable("trx")
+		}, 200)
 	}
 	if( usdtRows[usdtRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && usdtRows.length > 1  ){
-		sortTable("usdt")
+		setTimeout(() => {
+			sortTable("usdt")
+		}, 200)
 	}
 	
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && ethRows.length > 1 ){
