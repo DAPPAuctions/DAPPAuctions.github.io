@@ -287,7 +287,7 @@ function sortTable(tableId) {
 			y = rows[i + 1].getElementsByClassName("value")
 			x2 = rows[i].getElementsByClassName("#")
 			y2 = rows[i + 1].getElementsByClassName("#")
-			if ( x[0].innerHTML < y[0].innerHTML ) {
+			if (parseFloat(x[0].innerHTML.replace(/,/g, ''), 10) < parseFloat(y[0].innerHTML.replace(/,/g, ''), 10)) {
 				shouldSwitch = true
 				break
 			}
@@ -315,19 +315,13 @@ function checkSort(){
 	var usdtRows = usdt.rows
 	
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && ethRows.length > 1 ){
-		setTimeout(() => {
 			sortTable("eth")
-		}, 200)
 	}
 	if( trxRows[trxRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && trxRows.length > 1 ){
-		setTimeout(() => {
 			sortTable("trx")
-		}, 200)
 	}
 	if( usdtRows[usdtRows.length - 1].getElementsByClassName("value")[0].innerHTML != "---" && usdtRows.length > 1  ){
-		setTimeout(() => {
 			sortTable("usdt")
-		}, 200)
 	}
 	
 	if( ethRows[ethRows.length - 1].getElementsByClassName("value")[0].innerHTML == "---" && ethRows.length > 1 ){
