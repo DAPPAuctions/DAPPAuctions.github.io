@@ -16,13 +16,12 @@ trcContracts.push({name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ", shar
 trcContracts.push({name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1", sharePercent: .97})
 trcContracts.push({name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7", sharePercent: .95})
 trcContracts.push({name: "gcp", addr: "TVXRW7L5dT9NAAiEUoasVYCYhyPyWbVyYB", sharePercent: .95})
-
+trcContracts.push({name: "nes", addr: "TYB8mkRxRHKVFwKhtrmX5r4PxHGV11otUs", sharePercent: .90})
 
 trcContracts.push({name: "u2x", addr: "TYW7i9H58VEi2kuTDAzGGPcnaM4AkV6Xzd", sharePercent: .95, type: "usdt"})
 
 var ercUserAddress = void 0
 var trcUserAddress = void 0
-
 
 window.addEventListener('load', function () {
     // Load WEB3
@@ -80,24 +79,31 @@ window.addEventListener('load', function () {
 })
 
 var sorted = false
+let processingErc = false
+let processingTrc = false
+
 async function setUp(){
-	
 	await setUpETH()
-	await setUpTRX()
 	
-	if(ercUserAddress)
+	if(ercUserAddress && !processingErc){
 		for(var i = 0; i < ercContracts.length; i++){
 			await getERCStakes(i)
 		}
-	if(!trcUserAddress)
-		await loginTrc()
+		processingErc = true
+	}
 	
-	if(trcUserAddress)
+	await setUpTRX()
+	if(!trcUserAddress){
+		await loginTrc()
+		setUp()
+		return
+	}
+	
+	if(trcUserAddress && !processingTrc)
 		for(var i = 0; i < trcContracts.length; i++){
 			await getTRCStakes(i)
 		}
-
-		
+	
 	let cs = setInterval(() => {
 		if(!sorted)
 			checkSort()
@@ -105,7 +111,8 @@ async function setUp(){
 			clearInterval(cs)
 		}
 	}, 200)
-
+	processingErc = false
+	processingTrc = false
 }
 
 async function setUpETH() {
@@ -244,17 +251,18 @@ async function displayInfo(contract, index, type){
     contract.methods.currentDay().call({
         shouldPollResponse: true
     }).then(res => {
+		let currentDay = parseInt(res)
 		if(type == "eth"){
-			ercContracts[index].currentDay = res
-			$(`.${ercContracts[index].name}`)[0].innerHTML = parseInt(res)
+			ercContracts[index].currentDay = currentDay
+			$(`.${ercContracts[index].name}`)[0].innerHTML = currentDay
 		}
 		if(type == "trx"){
-			trcContracts[index].currentDay = res
-			$(`.${trcContracts[index].name}`)[0].innerHTML = parseInt(res)
+			trcContracts[index].currentDay = currentDay
+			$(`.${trcContracts[index].name}`)[0].innerHTML = currentDay
 		}
 		if(type == "usdt"){
-			trcContracts[index].currentDay = res
-			$(`.${trcContracts[index].name}`)[0].innerHTML = parseInt(res)
+			trcContracts[index].currentDay = currentDay
+			$(`.${trcContracts[index].name}`)[0].innerHTML = currentDay
 		}
 	
 		contract.methods.xfLobby(res).call({
@@ -408,8 +416,10 @@ async function getERCStakes(index) {
         shouldPollResponse: true
     }).then(res => {
 		let myStakesCount = res
-		if( myStakesCount == 0 )
+		if( myStakesCount == 0 ){
+			$(`.${ercContracts[index].name}`)[2].innerHTML = "None"
 			return
+		}
 		else
 			getERCDaysData(index)
 		
@@ -540,42 +550,45 @@ async function getTRCStakes(index) {
 			getTRCStakes(index)
 			return
 		}else{
-			const myStakesCount = res
-			
-			if( myStakesCount == 0 )
-				return
-			else
-				getTRCDaysData(index)
-				
+			const myStakesCount = parseInt(res)
 			setTimeout(() => {
-
-				let toBeRendered = []
-
-				let strt = 0
-				ck1()
-				function ck1() {
-					if (strt < myStakesCount) {
-						getDrc()
-						strt++
-					}
+				if( myStakesCount == 0 ){
+					$(`.${trcContracts[index].name}`)[2].innerHTML = "None"
+					return
 				}
-				function getDrc() {
-					trcContracts[index].contract.methods.stakeLists(trcUserAddress, strt).call({}, function(error, res2){
-						if(error){
+				else
+					getTRCDaysData(index)
+					
+				setTimeout(() => {
+
+					let toBeRendered = []
+
+					let strt = 0
+					ck1()
+					function ck1() {
+						if (strt < myStakesCount) {
 							getDrc()
-							return
-						}else{
-							toBeRendered.push(res2)
-
-							if (toBeRendered.length == myStakesCount) {
-								getTotalTRCDivs(index, toBeRendered)
-							}else {
-								ck1()
-							}
+							strt++
 						}
-					})
-				}
-			}, 3000)
+					}
+					function getDrc() {
+						trcContracts[index].contract.methods.stakeLists(trcUserAddress, strt).call({}, function(error, res2){
+							if(error){
+								getDrc()
+								return
+							}else{
+								toBeRendered.push(res2)
+
+								if (toBeRendered.length == myStakesCount) {
+									getTotalTRCDivs(index, toBeRendered)
+								}else {
+									ck1()
+								}
+							}
+						})
+					}
+				}, 3000)
+			}, 500)
 		}
     })
 }

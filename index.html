@@ -28,7 +28,9 @@
 			<a id="telegram" href="https://t.me/DAPPAuctions" target="_blank" data-platform="TELEGRAM">Telegram!</a>
 			<span class="toolbar-icon" onclick="var t = this; 
 												if(!t.disabled){
-													setUp();
+													if(typeof setUp === 'function'){
+														setUp();
+													};
 												};
 												t.disabled = true; 
 												setTimeout(function(){
@@ -56,6 +58,7 @@
                     <td class="header staked">Staked</td>
                     <td class="header divs">Divs</td>
                 </tr>
+				
                 <tr>
                     <td class="position">
 						<span>
@@ -73,12 +76,12 @@
 					<td class="staked e2x">---</td>
                     <td class="divs e2x">---</td>
                 </tr>
-												
+								
                 <tr>
                     <td class="position">
 						<span>
 							<span class="#">#2</span>
-							<a href="https://t.me/csexperiment" target="_blank">
+							<a href="https://t.me/csetronESP" target="_blank">
 								<img class="telegram-img" src="img/telegram.png" width="10px"></img>
 							</a>
 						</span>
@@ -131,7 +134,7 @@
                     <td class="position">
 						<span>
 						<span class="#">#2</span>
-							<a href="https://t.me/csexperiment" target="_blank">
+							<a href="https://t.me/csetronESP" target="_blank">
 								<img class="telegram-img" src="img/telegram.png" width="10px"></img>
 							</a>
 						</span>
@@ -245,11 +248,28 @@
 					<td class="staked bub">---</td>
                     <td class="divs bub">---</td>
                 </tr>
-					
+				
                 <tr>
                     <td class="position">
 						<span>
 						<span class="#">#9</span>
+							<a href="https://t.me/NewEraStaking" target="_blank">
+								<img class="telegram-img" src="img/telegram.png" width="10px"></img>
+							</a>
+						</span>
+                    <td class="header">
+                        <a href="https://www.newerastaking.com/panel/auction.html?ref=TELd2FZaA1pHn3ULzmemzoKhVHJEnqFkXg" target="_blank" data-platform="BES"><span class="site"><span style="color: red; width: fit-content;">NES</span></span></a>
+                    </td>
+                    <td class="header nes"><img src="img/loading.gif"></img></td>
+                    <td class="header value nes">---</td>
+					<td class="staked nes">---</td>
+                    <td class="divs nes">---</td>
+                </tr>
+				
+                <tr>
+                    <td class="position">
+						<span>
+						<span class="#">#10</span>
 							<a href="https://t.me/Gamechangerplatform" target="_blank">
 								<img class="telegram-img" src="img/telegram.png" width="10px"></img>
 							</a>
@@ -262,8 +282,7 @@
 					<td class="staked gcp">---</td>
                     <td class="divs gcp">---</td>
                 </tr>
-					
-				
+								
             </table>
 <!------------------END TRC------------------------>
 <!----------------START USDT----------------------->
