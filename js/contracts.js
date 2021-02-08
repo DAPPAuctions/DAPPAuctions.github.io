@@ -4,16 +4,9 @@ var ercContracts = []
 var trcContracts = []
 
 ercContracts.push({name: "e2x", addr: "0x99a923b8f3a4e41740e3f8947fd7be6aa736d8a6", sharePercent: .9})
-ercContracts.push({name: "csee", addr: "0x89074ceEf58061c123a81b5a25Ce893e96eEC830", sharePercent: .97})
-
 
 trcContracts.push({name: "t2x", addr: "THsSSczBw9RRMJWYL5j2MtcgaPasL2xPGP", sharePercent: .95})
 trcContracts.push({name: "cse", addr: "TVs1rRWrBkgQ5zxksYJuCeGthFohjKUGyy", sharePercent: .98})
-trcContracts.push({name: "lck", addr: "TXZp52GAUSRxiuKN2wJkwzgyqaosurKJ6r", sharePercent: .95})
-trcContracts.push({name: "msx", addr: "TFSCWYsykYeycgwfWNbbDLjQsH1JLtNEdC", sharePercent: .95})
-trcContracts.push({name: "csn", addr: "TDy92nCDYonF2HVaq2gn2QeEkCNw7Gc6oZ", sharePercent: 1})
-trcContracts.push({name: "nui", addr: "THddAHwJGHE5jtNrEHzompsDafgujH5YP1", sharePercent: .97})
-trcContracts.push({name: "moons", addr: "TCm3MnZcz5ZTRWMVTYX6P32XMGLXrdZuo7", sharePercent: .95})
 trcContracts.push({name: "nes", addr: "TYB8mkRxRHKVFwKhtrmX5r4PxHGV11otUs", sharePercent: .90})
 
 trcContracts.push({name: "u2x", addr: "TYW7i9H58VEi2kuTDAzGGPcnaM4AkV6Xzd", sharePercent: .95, type: "usdt"})
